@@ -1,8 +1,8 @@
 const sendgridMail = require('@sendgrid/mail');
 
-const { SENDGRID_API_KEY_1, SENDGRID_META_EMAIL } = process.env;
+const { SENDGRID_API_KEY, SENDGRID_META_EMAIL } = process.env;
 
-sendgridMail.setApiKey(SENDGRID_API_KEY_1);
+sendgridMail.setApiKey(SENDGRID_API_KEY);
 
 // data = { to, subject, text, html }
 const sendEmail = async data => {

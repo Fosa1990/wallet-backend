@@ -1,8 +1,8 @@
 const PORT = process.env.PORT || 8081;
 
 const USER_LIMIT = {
-  NAME: { MIN: 1, MAX: 50 },
-  EMAIL: { MIN: 5, MAX: 100 },
+  NAME: { MIN: 1, MAX: 12 },
+  EMAIL: { MIN: 10, MAX: 63 },
   PASSWORD: { MIN: 6, MAX: 100 },
 };
 
