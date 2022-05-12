@@ -1,6 +1,6 @@
 const Joi = require('joi');
 const { regexName, regexEmail } = require('../../helpers/regex');
-const { USER_LIMIT } = require('../../../helpers/constants');
+const { USER_LIMIT } = require('../../helpers/constants');
 
 const validationSignupUser = Joi.object({
   name: Joi.string()
