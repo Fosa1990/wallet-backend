@@ -12,7 +12,9 @@ const limiter = ({ windowMs, max }) => {
       return res.status(HTTP_CODE.TOO_MANY_REQUESTS).json({
         status: STATUS.ERROR,
         code: HTTP_CODE.TOO_MANY_REQUESTS,
-        message: MESSAGE.TOO_MANY_REQUESTS,
+        payload: {
+          message: MESSAGE.TOO_MANY_REQUESTS,
+        },
       });
     },
   });

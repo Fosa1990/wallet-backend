@@ -1,8 +1,7 @@
 const router = require('express').Router();
+const { getAllCategories } = require('../../controllers');
 
-// http://localhost:8083/api/categories/getAll
-router.get('/', async (req, res, next) => {
-  res.json({ message: 'template message: categories - getAll' });
-});
+// http://localhost:8081/api/categories/getAll
+router.get('/', getAllCategories);
 
 module.exports = router;

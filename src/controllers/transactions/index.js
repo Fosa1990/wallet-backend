@@ -1,13 +1,13 @@
 const createTransaction = require('./createTransaction');
 const getAllTransactions = require('./getAllTransactions');
-const getTransactionById = require('./getTransactionById');
-const updateTransaction = require('./updateTransaction');
+const getByIdTransaction = require('./getByIdTransaction');
+const updateByIdTransaction = require('./updateByIdTransaction');
 const deleteTransaction = require('./deleteTransaction');
 
 module.exports = {
   createTransaction,
   getAllTransactions,
-  getTransactionById,
-  updateTransaction,
+  getByIdTransaction,
+  updateByIdTransaction,
   deleteTransaction,
 };

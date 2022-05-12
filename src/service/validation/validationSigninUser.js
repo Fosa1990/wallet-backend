@@ -2,7 +2,7 @@ const Joi = require('joi');
 const { regexEmail } = require('../../helpers/regex');
 const { USER_LIMIT } = require('../../helpers/constants');
 
-const validationLoginUser = Joi.object({
+const validationSigninUser = Joi.object({
   email: Joi.string().pattern(regexEmail).required().messages({
     'any.required': 'Email is required',
     'string.empty': 'The email cannot be empty',
@@ -17,4 +17,4 @@ const validationLoginUser = Joi.object({
     }),
 });
 
-module.exports = validationLoginUser;
+module.exports = validationSigninUser;

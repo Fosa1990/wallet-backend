@@ -1,5 +1,14 @@
+const { STATUS, HTTP_CODE } = require('../../helpers/constants');
+
+// http://localhost:8081/api/transactions/deleteTransaction
 const deleteTransaction = async (req, res, next) => {
-  res.json({ message: 'template message: transactions - deleteTransaction' });
+  res.json({
+    status: STATUS.SUCCESS,
+    code: HTTP_CODE.OK,
+    payload: {
+      message: 'template message: transactions - deleteTransaction',
+    },
+  });
 };
 
 module.exports = deleteTransaction;
