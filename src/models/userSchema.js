@@ -35,7 +35,6 @@ const userSchema = new Schema(
     password: {
       type: String,
       minlength: USER_LIMIT.PASSWORD.MIN,
-      maxlength: USER_LIMIT.PASSWORD.MAX,
       required: [
         true,
         'Password is required and must be at least 6 characters long',
