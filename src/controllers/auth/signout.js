@@ -9,9 +9,6 @@ const signout = async (req, res) => {
   res.status(HTTP_CODE.NO_CONTENT).json({
     status: STATUS.OK,
     code: HTTP_CODE.NO_CONTENT,
-    payload: {
-      message: 'Signout successfully',
-    },
   });
 };
 
