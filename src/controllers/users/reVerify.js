@@ -1,14 +1,14 @@
 const { STATUS, HTTP_CODE } = require('../../helpers/constants');
 
-// http://localhost:8081/api/auth/signin
-const signin = async (req, res, next) => {
+// http://localhost:8081/api/users/verify
+const reVerify = async (req, res, next) => {
   res.json({
     status: STATUS.SUCCESS,
     code: HTTP_CODE.OK,
     payload: {
-      message: 'template message: signin',
+      message: 'template message: users/verify',
     },
   });
 };
 
-module.exports = signin;
+module.exports = reVerify;
