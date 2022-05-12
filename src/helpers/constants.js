@@ -39,6 +39,7 @@ const MESSAGE = {
   JWT_EXPIRED: 'jwt expired',
   TOOLTIP_ROUTES:
     "Use routes: '/api/auth/' or '/api/users/' or '/api/categories/' or '/api/transactions' ...",
+  REVERIFY_FAIL: 'Verification has already been passed',
 };
 
 const FILE_SIZE = {
