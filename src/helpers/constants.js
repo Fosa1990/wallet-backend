@@ -40,6 +40,7 @@ const MESSAGE = {
   TOOLTIP_ROUTES:
     "Use routes: '/api/auth/' or '/api/users/' or '/api/categories/' or '/api/transactions' ...",
   REVERIFY_FAIL: 'Verification has already been passed',
+  SIGNIN_FAILED: 'Email or password is wrong or user is not verified',
 };
 
 const FILE_SIZE = {

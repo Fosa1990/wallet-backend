@@ -5,7 +5,7 @@ const { STATUS, HTTP_CODE } = require('../../helpers/constants');
 const { sendEmail, emailConfig } = require('../../service/emailService');
 
 // http://localhost:8081/api/auth/signup
-const signup = async (req, res, next) => {
+const signup = async (req, res) => {
   const { name, email, password } = req.body;
 
   const userExist = await User.findOne({ email });
@@ -21,7 +21,7 @@ const signup = async (req, res, next) => {
   newUser.verifyUser(false);
   newUser.verifyToken(verificationToken);
   newUser.setHashPassword(password);
-  // newUser.setAvatar();
+  newUser.setAvatar();
   await newUser.save();
 
   const emailData = await emailConfig(
@@ -38,7 +38,7 @@ const signup = async (req, res, next) => {
       user: {
         name: newUser.name,
         email: newUser.email,
-        /* avatarURL: newUser.avatarURL, */
+        avatarURL: newUser.avatarURL,
         isVerified: newUser.isVerified,
         verificationToken: newUser.verificationToken,
       },
