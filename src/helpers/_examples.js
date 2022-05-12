@@ -6,10 +6,9 @@ const signup = {
     user: {
       name: 'test user one',
       email: 'golaj76460@angeleslid.com',
-      avatarURL:
-        'https://s.gravatar.com/avatar/3b92774e43da3a6c9186bb1cc66b0705?s=250',
+      avatarURL: 'https://...avatar url',
       isVerified: false,
-      verificationToken: '839dc6d4-ce8e-4f97-9f00-d46be76dd645',
+      verificationToken: 'verification token',
     },
   },
 };
@@ -18,13 +17,11 @@ const signin = {
   status: 'success',
   code: 200,
   payload: {
-    token:
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyN2M1ZGUzYjVkYmUxNjcxZjI5ZTdhYiIsImlhdCI6MTY1MjMxNzkxNywiZXhwIjoxNjUyMzIxNTE3fQ.xod3SZtBSzHAEcqPYABmFMTLQx7nH9_ZKtRsDW8BbbM',
+    token: 'token',
     user: {
       name: 'test user one',
       email: 'golaj76460@angeleslid.com',
-      avatarURL:
-        'https://s.gravatar.com/avatar/3b92774e43da3a6c9186bb1cc66b0705?s=250',
+      avatarURL: 'https://...avatar url',
     },
   },
 };
@@ -40,8 +37,7 @@ const current = {
       name: 'test user one',
       email: 'golaj76460@angeleslid.com',
       subscription: 'starter',
-      avatarURL:
-        'https://s.gravatar.com/avatar/3b92774e43da3a6c9186bb1cc66b0705?s=250',
+      avatarURL: 'https://...avatar url',
     },
   },
 };
@@ -61,13 +57,13 @@ const addTransaction = {
   payload: {
     contact: {
       name: 'rabbit',
-      email: '23rabbit@gamil.com',
-      phone: '55000000',
+      email: 'test@gamil.com',
+      phone: '123456789',
       favorite: true,
-      owner: '627c5de3b5dbe1671f29e7ab',
-      _id: '627c60e4b5dbe1671f29e7b8',
-      createdAt: '2022-05-12T01:20:36.052Z',
-      updatedAt: '2022-05-12T01:20:36.052Z',
+      owner: 'id',
+      _id: 'id',
+      createdAt: 'time',
+      updatedAt: 'time',
     },
   },
 };
