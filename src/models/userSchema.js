@@ -1,5 +1,7 @@
 const { Schema } = require('mongoose');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const gravatar = require('gravatar');
 const { regexName, regexEmail } = require('../helpers/regex');
 const { USER_LIMIT } = require('../helpers/constants');
 
@@ -33,7 +35,6 @@ const userSchema = new Schema(
     password: {
       type: String,
       minlength: USER_LIMIT.PASSWORD.MIN,
-      maxlength: USER_LIMIT.PASSWORD.MAX,
       required: [
         true,
         'Password is required and must be at least 6 characters long',
@@ -69,12 +70,21 @@ userSchema.methods.comparePassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 
+userSchema.methods.setToken = function () {
+  const { SECRET_KEY } = process.env;
+  this.token = jwt.sign({ id: this._id }, SECRET_KEY, { expiresIn: '1h' });
+};
+
 userSchema.methods.verifyUser = function (updateVerification) {
   this.isVerified = updateVerification;
 };
 
 userSchema.methods.verifyToken = function (updateToken) {
   this.verificationToken = updateToken;
+};
+
+userSchema.methods.setAvatar = function () {
+  this.avatarURL = gravatar.url(this.email, { s: '250' }, true);
 };
 
 module.exports = userSchema;

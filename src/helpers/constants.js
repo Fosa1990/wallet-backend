@@ -39,6 +39,7 @@ const MESSAGE = {
   JWT_EXPIRED: 'jwt expired',
   TOOLTIP_ROUTES:
     "Use routes: '/api/auth/' or '/api/users/' or '/api/categories/' or '/api/transactions' ...",
+  SIGNIN_FAILED: 'Email or password is wrong or user is not verified',
 };
 
 const FILE_SIZE = {
