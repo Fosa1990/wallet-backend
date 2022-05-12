@@ -1,12 +1,16 @@
+const { User } = require('../../models');
 const { STATUS, HTTP_CODE } = require('../../helpers/constants');
 
 // http://localhost:8081/api/auth/signout
-const signout = async (req, res, next) => {
-  res.json({
-    status: STATUS.SUCCESS,
-    code: HTTP_CODE.OK,
+const signout = async (req, res) => {
+  const { id } = req.user;
+  await User.findByIdAndUpdate(id, { token: null });
+
+  res.status(HTTP_CODE.NO_CONTENT).json({
+    status: STATUS.OK,
+    code: HTTP_CODE.NO_CONTENT,
     payload: {
-      message: 'template message: signout',
+      message: 'Signout successfully',
     },
   });
 };
