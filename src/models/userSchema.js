@@ -1,10 +1,10 @@
-const { Schema } = require('mongoose');
+const { Schema } = require("mongoose");
 // const bcrypt = require('bcryptjs');
-const { regexName, regexEmail } = require('../../helpers/regex');
-const { USER_LIMIT } = require('../../helpers/constants');
+const { regexName, regexEmail } = require("../helpers/regex");
+const { USER_LIMIT } = require("../helpers/constants");
 
-const validateName = name => regexName.test(name);
-const validateEmail = email => regexEmail.test(email);
+const validateName = (name) => regexName.test(name);
+const validateEmail = (email) => regexEmail.test(email);
 
 const userSchema = new Schema(
   {
@@ -14,9 +14,9 @@ const userSchema = new Schema(
       lowercase: true,
       minlength: USER_LIMIT.NAME.MIN,
       maxlength: USER_LIMIT.NAME.MAX,
-      required: [true, 'Name is required'],
-      validate: [validateName, 'Please fill a valid name'],
-      match: [regexName, 'Please fill a valid name'],
+      required: [true, "Name is required"],
+      validate: [validateName, "Please fill a valid name"],
+      match: [regexName, "Please fill a valid name"],
     },
     email: {
       type: String,
@@ -25,9 +25,9 @@ const userSchema = new Schema(
       lowercase: true,
       minlength: USER_LIMIT.EMAIL.MIN,
       maxlength: USER_LIMIT.EMAIL.MAX,
-      required: [true, 'Email is required'],
-      validate: [validateEmail, 'Please fill a valid email address'],
-      match: [regexEmail, 'Please fill a valid email address'],
+      required: [true, "Email is required"],
+      validate: [validateEmail, "Please fill a valid email address"],
+      match: [regexEmail, "Please fill a valid email address"],
       unique: true,
     },
     password: {
@@ -36,7 +36,7 @@ const userSchema = new Schema(
       maxlength: USER_LIMIT.PASSWORD.MAX,
       required: [
         true,
-        'Password is required and must be at least 6 characters long',
+        "Password is required and must be at least 6 characters long",
       ],
     },
     avatarURL: {
@@ -58,7 +58,7 @@ const userSchema = new Schema(
       default: null,
     },
   },
-  { versionKey: false, timestamps: true },
+  { versionKey: false, timestamps: true }
 );
 
-module.exports = { userSchema };
+module.exports = userSchema;

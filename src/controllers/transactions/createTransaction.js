@@ -1,12 +1,16 @@
-const { STATUS, HTTP_CODE } = require('../../helpers/constants');
+const { Transaction } = require("../../models");
+const { STATUS, HTTP_CODE } = require("../../helpers/constants");
 
 // http://localhost:8081/api/transactions/createTransaction
 const createTransaction = async (req, res, next) => {
-  res.json({
-    status: STATUS.SUCCESS,
-    code: HTTP_CODE.OK,
+  const { body } = req;
+  const transaction = await Transaction.create(body);
+  res.status(201).json({
+    status: STATUS.CREATED,
+    code: HTTP_CODE.CREATED,
     payload: {
-      message: 'template message: transactions - createTransaction',
+      message: "Transaction created successfully",
+      transaction,
     },
   });
 };

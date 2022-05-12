@@ -1,11 +1,15 @@
-const { model } = require('mongoose');
+const { model } = require("mongoose");
 
-const { categoriesSchema } = require('./categoriesSchema');
-const { transactionsSchema } = require('./transactionsSchema');
-const { userSchema } = require('./userSchema');
+const categoriesSchema = require("./categoriesSchema");
+const transactionsSchema = require("./transactionsSchema");
+const userSchema = require("./userSchema");
 
-const Category = model('user', categoriesSchema);
-const Transactions = model('user', transactionsSchema);
-const User = model('user', userSchema);
+const Category = model("category", categoriesSchema);
+const Transaction = model("transaction", transactionsSchema);
+const User = model("user", userSchema);
 
-module.exports = { User, Transactions, Category };
+module.exports = {
+  User,
+  Transaction,
+  Category,
+};
