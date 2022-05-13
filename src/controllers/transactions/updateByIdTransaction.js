@@ -9,7 +9,7 @@ const updateByIdTransaction = async (req, res, next) => {
     new: true,
   });
   if (transaction) {
-    res.json({
+    res.status(HTTP_CODE.OK).json({
       status: STATUS.SUCCESS,
       code: HTTP_CODE.OK,
       payload: {
@@ -18,7 +18,7 @@ const updateByIdTransaction = async (req, res, next) => {
       },
     });
   } else {
-    return res.status(404).json({
+    return res.status(HTTP_CODE.NOT_FOUND).json({
       status: STATUS.ERROR,
       code: HTTP_CODE.NOT_FOUND,
       payload: {

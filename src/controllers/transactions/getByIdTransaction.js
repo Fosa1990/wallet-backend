@@ -6,7 +6,7 @@ const getByIdTransaction = async (req, res, next) => {
   const { transactionId: _id } = req.params;
   const transaction = await Transaction.findById(_id);
   if (transaction) {
-    res.json({
+    res.status(HTTP_CODE.OK).json({
       status: STATUS.SUCCESS,
       code: HTTP_CODE.OK,
       payload: {
@@ -15,7 +15,7 @@ const getByIdTransaction = async (req, res, next) => {
       },
     });
   } else {
-    res.status(404).json({
+    res.status(HTTP_CODE.NOT_FOUND).json({
       status: STATUS.ERROR,
       code: HTTP_CODE.NOT_FOUND,
       payload: {
