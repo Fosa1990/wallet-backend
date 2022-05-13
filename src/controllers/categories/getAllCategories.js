@@ -1,26 +1,30 @@
-const { Transaction } = require("../../models");
-const { STATUS, HTTP_CODE } = require("../../helpers/constants");
+const { Transaction } = require('../../models');
+const { STATUS, HTTP_CODE } = require('../../helpers/constants');
 
-// http://localhost:8081/api/transactions/categories/getAllCategories
-const getAllCategories = async (req, res, next) => {
-  // const { body } = req.body;
+// http://localhost:8081/api/transactions/categories?year=2022&month=10/getAllCategories
+const getAllCategories = async (req, res) => {
+  const { year, month } = req.query;
+  // const year = '2022';
+  // const month = '07';
+
   const categories = await Transaction.aggregate([
     {
       $facet: {
         transactionType: [
           {
             $match: {
+              owner: req.user._id,
               date: {
-                $gte: new Date("Sun, 01 Jan 2022 00:00:00 GMT"),
-                $lte: new Date("Sun, 01 Dec 2022 00:00:00 GMT"),
+                $gte: new Date(`${year}-${month}-01`),
+                $lte: new Date(`${year}-${month}-31`),
               },
             },
           },
           {
             $group: {
-              _id: "$transactionType",
+              _id: '$transactionType',
               totalSum: {
-                $sum: "$balance",
+                $sum: '$balance',
               },
             },
           },
@@ -28,17 +32,18 @@ const getAllCategories = async (req, res, next) => {
         category: [
           {
             $match: {
+              owner: req.user._id,
               date: {
-                $gte: new Date("Sun, 01 Jan 2022 00:00:00 GMT"),
-                $lte: new Date("Sun, 01 Dec 2022 00:00:00 GMT"),
+                $gte: new Date(`${year}-${month}-01`),
+                $lte: new Date(`${year}-${month}-31`),
               },
             },
           },
           {
             $group: {
-              _id: "$category",
+              _id: '$category',
               totalSum: {
-                $sum: "$balance",
+                $sum: '$balance',
               },
             },
           },
@@ -50,7 +55,7 @@ const getAllCategories = async (req, res, next) => {
     status: STATUS.SUCCESS,
     code: HTTP_CODE.OK,
     payload: {
-      message: "Categories loaded successfully",
+      message: 'Categories loaded successfully',
       categories,
     },
   });
