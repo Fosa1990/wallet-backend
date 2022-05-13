@@ -1,3 +1,4 @@
+
 // const { Schema, Types } = require("mongoose");
 
 // const categoriesSchema = new Schema(
@@ -32,5 +33,6 @@
 //   },
 //   { versionKey: false, timestamps: true }
 // );
+
 
 // module.exports = categoriesSchema;

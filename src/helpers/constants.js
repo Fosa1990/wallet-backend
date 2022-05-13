@@ -1,9 +1,9 @@
 const PORT = process.env.PORT || 8081;
 
 const USER_LIMIT = {
-  NAME: { MIN: 1, MAX: 50 },
-  EMAIL: { MIN: 5, MAX: 100 },
-  PASSWORD: { MIN: 6, MAX: 100 },
+  NAME: { MIN: 1, MAX: 12 },
+  EMAIL: { MIN: 10, MAX: 63 },
+  PASSWORD: { MIN: 6, MAX: 16 },
 };
 
 const HTTP_CODE = {
@@ -39,6 +39,8 @@ const MESSAGE = {
   JWT_EXPIRED: 'jwt expired',
   TOOLTIP_ROUTES:
     "Use routes: '/api/auth/' or '/api/users/' or '/api/categories/' or '/api/transactions' ...",
+  REVERIFY_FAIL: 'Verification has already been passed',
+  SIGNIN_FAILED: 'Email or password is wrong or user is not verified',
 };
 
 const FILE_SIZE = {
