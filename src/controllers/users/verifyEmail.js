@@ -2,11 +2,11 @@ const { NotFound } = require('http-errors');
 const { User } = require('../../models');
 const { STATUS, HTTP_CODE } = require('../../helpers/constants');
 
-// http://localhost:8081/api/users/verify/:verifyToken
+// http://localhost:8081/api/users/verify/:verificationToken
 const verifyEmail = async (req, res) => {
-  const { verifyToken } = req.params;
+  const { verificationToken } = req.params;
 
-  const userExist = await User.findOne({ verifyToken });
+  const userExist = await User.findOne({ verificationToken });
 
   if (!userExist) throw new NotFound(`Not found user`);
 
