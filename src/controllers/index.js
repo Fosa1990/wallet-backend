@@ -1,13 +1,17 @@
-const { signin, signout, signup } = require('./auth');
-const { current, reVerify, verifyEmail, avatar } = require('./users');
-const { getAllCategories } = require('./categories');
+const { signin, signout, signup } = require("./auth");
+const { current, reVerify, verifyEmail, avatar } = require("./users");
+const {
+  createCategory,
+  getAllCategories,
+  getByIdCategories,
+} = require("./categories");
 const {
   createTransaction,
   getAllTransactions,
   getByIdTransaction,
   updateByIdTransaction,
   deleteTransaction,
-} = require('./transactions');
+} = require("./transactions");
 
 module.exports = {
   signin,
@@ -17,7 +21,9 @@ module.exports = {
   reVerify,
   verifyEmail,
   avatar,
+  createCategory,
   getAllCategories,
+  getByIdCategories,
   createTransaction,
   getAllTransactions,
   getByIdTransaction,

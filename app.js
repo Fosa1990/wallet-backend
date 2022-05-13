@@ -1,23 +1,23 @@
-const express = require('express');
-const logger = require('morgan');
-const cors = require('cors');
-const helmet = require('helmet');
-const limiter = require('./src/middlewares/limiter');
+const express = require("express");
+const logger = require("morgan");
+const cors = require("cors");
+const helmet = require("helmet");
+const limiter = require("./src/middlewares/limiter");
 
-const authRouter = require('./src/routes/api/auth');
-const categoriesRouter = require('./src/routes/api/categories');
-const transactionsRouter = require('./src/routes/api/transactions');
-const usersRouter = require('./src/routes/api/users');
+const authRouter = require("./src/routes/api/auth");
+const categoriesRouter = require("./src/routes/api/categories");
+const transactionsRouter = require("./src/routes/api/transactions");
+const usersRouter = require("./src/routes/api/users");
 
 const {
   routesErrorhandler,
   mainErrorHandler,
-} = require('./src/service/errorHandlers');
-const { apiLimit } = require('./src/config/rateLimit.json');
+} = require("./src/service/errorHandlers");
+const { apiLimit } = require("./src/config/rateLimit.json");
 
 const app = express();
 
-const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
+const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
 app.use(limiter(apiLimit));
 app.use(helmet());
@@ -26,10 +26,10 @@ app.use(express.static(process.env.STATIC_FOLDER));
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/auth', authRouter);
-app.use('/api/categories', categoriesRouter);
-app.use('/api/transactions', transactionsRouter);
-app.use('/api/users', usersRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/categories", categoriesRouter);
+app.use("/api/transactions", transactionsRouter);
+app.use("/api/users", usersRouter);
 
 app.use(routesErrorhandler);
 app.use(mainErrorHandler);

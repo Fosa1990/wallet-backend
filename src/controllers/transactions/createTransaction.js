@@ -5,7 +5,7 @@ const { STATUS, HTTP_CODE } = require("../../helpers/constants");
 const createTransaction = async (req, res, next) => {
   const { body } = req;
   const transaction = await Transaction.create(body);
-  res.status(201).json({
+  res.status(HTTP_CODE.CREATED).json({
     status: STATUS.CREATED,
     code: HTTP_CODE.CREATED,
     payload: {
