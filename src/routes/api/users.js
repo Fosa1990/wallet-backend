@@ -10,8 +10,8 @@ const { validationEmail } = require('../../service/validation');
 // http://localhost:8081/api/users/current
 router.get('/current', validateAuth, tryCatchWrapper(current));
 
-// http://localhost:8081/api/users/avatars
-router.patch('/avatars', tryCatchWrapper(avatar));
+// http://localhost:8081/api/users/avatar
+router.patch('/avatar', tryCatchWrapper(avatar));
 
 // http://localhost:8081/api/users/verify
 router.post(
