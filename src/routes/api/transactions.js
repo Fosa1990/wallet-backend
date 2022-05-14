@@ -7,10 +7,25 @@ const {
   updateByIdTransaction,
 } = require('../../controllers');
 
-const { validateAuth, tryCatchWrapper } = require('../../middlewares');
+const {
+  validateAuth,
+  validateBody,
+  validateParams,
+  tryCatchWrapper,
+} = require('../../middlewares');
+
+const {
+  validationId,
+  validationCreateTransaction,
+  validationUpdateTransaction,
+} = require('../../service/validation');
 
 // http://localhost:8081/api/transactions
-router.post('/', validateAuth, tryCatchWrapper(createTransaction));
+router.post(
+  '/',
+  [validateAuth, validateBody(validationCreateTransaction)],
+  tryCatchWrapper(createTransaction),
+);
 
 // http://localhost:8081/api/transactions
 router.get('/', validateAuth, tryCatchWrapper(getAllTransactions));
@@ -32,7 +47,11 @@ router.delete(
 // http://localhost:8081/api/transactions/transactionId
 router.put(
   '/:transactionId',
-  validateAuth,
+  [
+    validateAuth,
+    validateParams(validationId),
+    validateBody(validationUpdateTransaction),
+  ],
   tryCatchWrapper(updateByIdTransaction),
 );
 
