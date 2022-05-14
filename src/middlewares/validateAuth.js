@@ -25,6 +25,7 @@ const validateAuth = async (req, res, next) => {
     if (err.message === MESSAGE.INVALID_SIGNATURE || MESSAGE.JWT_EXPIRED) {
       err.status = HTTP_CODE.UNAUTHORIZED;
     }
+    next(err);
   }
 };
 
