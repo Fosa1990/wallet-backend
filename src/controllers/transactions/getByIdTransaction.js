@@ -1,7 +1,8 @@
 const { Transaction } = require('../../models');
 const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 
-// http://localhost:8081/api/transactions/getByIdTransaction
+// http://localhost:8081/api/transactions/transactionId
+// METHOD: GET
 const getByIdTransaction = async (req, res) => {
   const transaction = await Transaction.findOne({
     _id: req.params.transactionId,

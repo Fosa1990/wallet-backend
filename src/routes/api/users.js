@@ -11,7 +11,7 @@ const { validationEmail } = require('../../service/validation');
 router.get('/current', validateAuth, tryCatchWrapper(current));
 
 // http://localhost:8081/api/users/avatar
-router.patch('/avatars', tryCatchWrapper(avatar));
+router.patch('/avatar', tryCatchWrapper(avatar));
 
 // http://localhost:8081/api/users/verify
 router.post(

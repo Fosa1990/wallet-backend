@@ -3,6 +3,7 @@ const { User } = require('../../models');
 const { STATUS, HTTP_CODE } = require('../../helpers/constants');
 
 // http://localhost:8081/api/users/verify/:verificationToken
+// METHOD: GET
 const verifyEmail = async (req, res) => {
   const { verificationToken } = req.params;
 

@@ -1,6 +1,7 @@
 const { STATUS, HTTP_CODE } = require('../../helpers/constants');
 
 // http://localhost:8081/api/users/avatar
+// METHOD: PATCH
 const avatar = async (req, res, next) => {
   res.json({
     status: STATUS.SUCCESS,

@@ -4,6 +4,7 @@ const { sendEmail, emailConfig } = require('../../service/emailService');
 const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 
 // http://localhost:8081/api/users/verify
+// METHOD: POST
 const reVerify = async (req, res, next) => {
   const { email } = req.body;
 

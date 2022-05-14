@@ -1,12 +1,10 @@
 const { Transaction } = require('../../models');
 const { STATUS, HTTP_CODE } = require('../../helpers/constants');
 
-// http://localhost:8081/api/transactions/categories?year=2022&month=10/getAllCategories
+// http://localhost:8081/api/categories?year=2022&month=10
+// METHOD: GET
 const getAllCategories = async (req, res) => {
   const { year, month } = req.query;
-  // const year = '2022';
-  // const month = '07';
-
   const categories = await Transaction.aggregate([
     {
       $facet: {

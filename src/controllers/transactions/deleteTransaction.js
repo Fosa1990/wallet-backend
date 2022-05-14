@@ -1,7 +1,8 @@
 const { Transaction } = require('../../models');
 const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 
-// http://localhost:8081/api/transactions/deleteTransaction
+// http://localhost:8081/api/transactions/transactionId
+// METHOD: DELETE
 const deleteTransaction = async (req, res) => {
   const transaction = await Transaction.findOneAndRemove({
     _id: req.params.transactionId,

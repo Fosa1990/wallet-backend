@@ -9,27 +9,27 @@ const {
 
 const { validateAuth, tryCatchWrapper } = require('../../middlewares');
 
-// http://localhost:8081/api/transactions/createTransaction
+// http://localhost:8081/api/transactions
 router.post('/', validateAuth, tryCatchWrapper(createTransaction));
 
-// http://localhost:8081/api/transactions/getAllTransactions
+// http://localhost:8081/api/transactions
 router.get('/', validateAuth, tryCatchWrapper(getAllTransactions));
 
-// http://localhost:8081/api/transactions/getTransactionById
+// http://localhost:8081/api/transactions/transactionId
 router.get(
   '/:transactionId',
   validateAuth,
   tryCatchWrapper(getByIdTransaction),
 );
 
-// http://localhost:8081/api/transactions/deleteTransaction
+// http://localhost:8081/api/transactions/transactionId
 router.delete(
   '/:transactionId',
   validateAuth,
   tryCatchWrapper(deleteTransaction),
 );
 
-// http://localhost:8081/api/transactions/updateByIdTransaction
+// http://localhost:8081/api/transactions/transactionId
 router.put(
   '/:transactionId',
   validateAuth,
