@@ -20,7 +20,7 @@ router.post(
   tryCatchWrapper(reVerify),
 );
 
-// http://localhost:8081/api/users/verify/verificationToken
+// http://localhost:8081/api/users/verify/:verificationToken
 router.get('/verify/:verificationToken', tryCatchWrapper(verifyEmail));
 
 module.exports = router;
