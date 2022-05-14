@@ -2,6 +2,7 @@ const { User } = require('../../models');
 const { STATUS, HTTP_CODE } = require('../../helpers/constants');
 
 // http://localhost:8081/api/auth/signout
+// METHOD: GET
 const signout = async (req, res) => {
   const { id } = req.user;
   await User.findByIdAndUpdate(id, { token: null });

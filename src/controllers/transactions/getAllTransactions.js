@@ -1,7 +1,8 @@
 const { Transaction } = require('../../models');
 const { STATUS, HTTP_CODE } = require('../../helpers/constants');
 
-// http://localhost:8081/api/transactions/getAllTransactions
+// http://localhost:8081/api/transactions
+// METHOD: GET
 const getAllTransactions = async (req, res) => {
   const transactions = await Transaction.find({ owner: req.user._id }).populate(
     'owner',

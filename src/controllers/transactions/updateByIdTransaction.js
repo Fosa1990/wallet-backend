@@ -1,7 +1,8 @@
 const { Transaction } = require('../../models');
 const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 
-// http://localhost:8081/api/transactions/updateByIdTransaction
+// http://localhost:8081/api/transactions/transactionId
+// METHOD: PUT
 const updateByIdTransaction = async (req, res) => {
   const transaction = await Transaction.findOneAndUpdate(
     {

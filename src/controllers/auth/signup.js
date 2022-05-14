@@ -5,6 +5,7 @@ const { STATUS, HTTP_CODE } = require('../../helpers/constants');
 const { sendEmail, emailConfig } = require('../../service/emailService');
 
 // http://localhost:8081/api/auth/signup
+// METHOD: POST
 const signup = async (req, res) => {
   const { name, email, password } = req.body;
 
