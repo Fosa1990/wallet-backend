@@ -1,3 +1,3 @@
 # Amazing wallet backend
 
-[Heroku-server](https://git.heroku.com/amazing-wallet.git)
+[Heroku-server](https://amazing-wallet.herokuapp.com/)

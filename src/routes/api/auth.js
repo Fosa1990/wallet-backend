@@ -1,5 +1,11 @@
 const router = require('express').Router();
-const { signup, signin, signout } = require('../../controllers');
+const {
+  signup,
+  signin,
+  signout,
+  googleAuth,
+  googleRedirect,
+} = require('../../controllers');
 const {
   validateAuth,
   validateBody,
@@ -26,5 +32,11 @@ router.post(
 
 // http://localhost:8081/api/auth/signout
 router.get('/signout', validateAuth, tryCatchWrapper(signout));
+
+// http://localhost:8081/api/auth/google
+router.get('/google', tryCatchWrapper(googleAuth));
+
+// http://localhost:8081/api/auth/google-redirect
+router.get('/google-redirect', tryCatchWrapper(googleRedirect));
 
 module.exports = router;
