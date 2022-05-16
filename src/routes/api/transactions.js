@@ -158,7 +158,7 @@ router
    *                       type: string
    *                       example : some coment
    *                     balance:
-   *                       type: Number
+   *                       type: double
    *                       example: 12000
    *                     category:
    *                       type: string
@@ -384,10 +384,10 @@ router
    *                         type: string
    *                         example : 2022-10-02T00:00:00.000Z
    *                        sum:
-   *                         type: integer
+   *                         type: double
    *                         example : 2000
    *                        balance:
-   *                         type: integer
+   *                         type: double
    *                         example: 11000
    *                        comment:
    *                         type: string
@@ -489,7 +489,7 @@ router
    *                   example: 200
    *                 message:
    *                   type: string
-   *                   description: Transaction deleted
+   *                   example: Transaction deleted successfully
    *       401:
    *         description: Unauthorized
    *         content:
@@ -600,10 +600,10 @@ router
    *                         type: string
    *                         example : 2022-12-22T00:00:00.000Z
    *                        sum:
-   *                         type: integer
+   *                         type: double
    *                         example : 25000
    *                        balance:
-   *                         type: integer
+   *                         type: double
    *                         example: 36000
    *                        comment:
    *                         type: string

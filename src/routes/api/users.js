@@ -83,7 +83,7 @@ router
    *                   type: object
    *                   properties:
    *                     id:
-   *                       type: integer
+   *                       type: double
    *                       description: The user ID.
    *                       example: 0
    *                     name:
@@ -95,7 +95,7 @@ router
    *                       description: The user's email
    *                       example: test@gmail.com
    *                     balance:
-   *                       type: number
+   *                       type: double
    *                       description: The user's balance
    *                       example: 0.00
    *                     message:

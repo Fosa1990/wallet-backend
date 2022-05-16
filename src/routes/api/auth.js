@@ -120,6 +120,10 @@ router
    *                           type: string
    *                           description: The user's email.
    *                           example: test@gmail.com
+   *                         balance:
+   *                           type: double
+   *                           description: The user's balance.
+   *                           example: 10000
    *                         avatarURL:
    *                           type: string
    *                           description: The avatar url of the user.
@@ -265,6 +269,10 @@ router
    *                           type: string
    *                           description: The user's email.
    *                           example: test@gmail.com
+   *                         balance:
+   *                           type: double
+   *                           description: The user's balance.
+   *                           example: 5000
    *                         avatarURL:
    *                           type: string
    *                           description: The avatar url of the user.
