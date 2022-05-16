@@ -40,9 +40,6 @@ const validationUpdateTransaction = Joi.object({
     'string.empty': 'The comment cannot be empty',
     'string.max': 'Max 250 characters',
   }),
-  balance: Joi.number().optional().messages({
-    'string.empty': 'The balance cannot be empty',
-  }),
 });
 
 module.exports = validationUpdateTransaction;

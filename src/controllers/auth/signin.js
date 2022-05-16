@@ -26,6 +26,7 @@ const signin = async (req, res) => {
       user: {
         name: userExist.name,
         email: userExist.email,
+        balance: userExist.balance,
         avatarURL: userExist.avatarURL,
       },
       message: MESSAGE.USER_SIGNIN,

@@ -45,6 +45,12 @@ const userSchema = new Schema(
       minlength: USER_LIMIT.PASSWORD.MIN,
       required: [false, "Confirm Password isn't required"],
     },
+    balance: {
+      type: Number,
+      min: '0',
+      required: [true, 'Balance is required'],
+      default: 0,
+    },
     avatarURL: {
       type: String,
       required: [false, "Avatar isn't required"],
@@ -86,6 +92,10 @@ userSchema.methods.verifyUser = function (updateVerification) {
 
 userSchema.methods.verifyToken = function (updateToken) {
   this.verificationToken = updateToken;
+};
+
+userSchema.methods.setBalance = function (updateBalance) {
+  this.balance = updateBalance;
 };
 
 userSchema.methods.setAvatar = function () {

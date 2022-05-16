@@ -5,43 +5,38 @@ const { STATUS, HTTP_CODE } = require('../../helpers/constants');
 // METHOD: GET
 const getAllCategories = async (req, res) => {
   const { year, month } = req.query;
+
+  const match = {
+    $match: {
+      owner: req.user._id,
+      date: {
+        $gte: new Date(`${year}-${month}-01`),
+        $lte: new Date(`${year}-${month}-31`),
+      },
+    },
+  };
+
   const categories = await Transaction.aggregate([
     {
       $facet: {
         transactionType: [
-          {
-            $match: {
-              owner: req.user._id,
-              date: {
-                $gte: new Date(`${year}-${month}-01`),
-                $lte: new Date(`${year}-${month}-31`),
-              },
-            },
-          },
+          match,
           {
             $group: {
               _id: '$transactionType',
               totalSum: {
-                $sum: '$balance',
+                $sum: '$sum',
               },
             },
           },
         ],
         category: [
-          {
-            $match: {
-              owner: req.user._id,
-              date: {
-                $gte: new Date(`${year}-${month}-01`),
-                $lte: new Date(`${year}-${month}-31`),
-              },
-            },
-          },
+          match,
           {
             $group: {
               _id: '$category',
               totalSum: {
-                $sum: '$balance',
+                $sum: '$sum',
               },
             },
           },
