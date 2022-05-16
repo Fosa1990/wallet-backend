@@ -1,7 +1,7 @@
 const { randomUUID } = require('crypto');
 const { Conflict } = require('http-errors');
 const { User } = require('../../models');
-const { STATUS, HTTP_CODE } = require('../../helpers/constants');
+const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 const { sendEmail, emailConfig } = require('../../service/emailService');
 
 // http://localhost:8081/api/auth/signup
@@ -44,6 +44,7 @@ const signup = async (req, res) => {
         isVerified: newUser.isVerified,
         verificationToken: newUser.verificationToken,
       },
+      message: `${MESSAGE.USER_CREATED} ${newUser.email}`,
     },
   });
 };

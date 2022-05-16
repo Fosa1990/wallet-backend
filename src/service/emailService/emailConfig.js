@@ -1,5 +1,5 @@
 const { PORT } = require('../../helpers/constants.js');
-
+const { HEROKU_HOST } = process.env;
 const emailConfig = async (name, email, verificationToken) => {
   const htmlTemplate = `
   <h1>Hi ${name}!</h1>
@@ -7,7 +7,9 @@ const emailConfig = async (name, email, verificationToken) => {
   <br/>
   <p>If you have any questions/issues regarding the process, feel free to <a target="_blank" rel="noopener noreferrer" href="mailto:fosa1990@meta.ua">contact me.</a></p>
   <br/>
-  <p>To verify your email: <b>${email}</b> <a target="_blank" href="http://localhost:${PORT}/api/users/verify/${verificationToken}">Click here</a>. Thank you (^_^)</p>
+  <p>To verify your email with Heroku: <b>${email}</b> <a target="_blank" href="${HEROKU_HOST}/api/users/verify/${verificationToken}">Click here</a>. Thank you (^_^)</p>
+  <br/>
+  <p>To verify your email with Localhost: <b>${email}</b> <a target="_blank" href="http://localhost:${PORT}/api/users/verify/${verificationToken}">Click here</a>. Thank you (^_^)</p>
   <br/>
   <p>Glad to see you on our:&nbsp;
   <a target="_blank" rel="noopener noreferrer" href="https://amazing-wallet.netlify.app/">Live Page</a>&nbsp;
