@@ -37,10 +37,14 @@ const MESSAGE = {
   TOO_MANY_REQUESTS: 'Too many requests from this IP address, rest a bit (^_^)',
   BEARER: 'Bearer',
   JWT_EXPIRED: 'jwt expired',
+  REVERIFY_FAIL: 'Verification has already been passed',
   TOOLTIP_ROUTES:
     "Use routes: '/api/auth/' or '/api/users/' or '/api/categories/' or '/api/transactions' ...",
-  REVERIFY_FAIL: 'Verification has already been passed',
-  SIGNIN_FAILED: 'Email or password is wrong or user is not verified',
+  USER_CREATED: 'User created, please verify your email',
+  USER_SIGNIN: 'Signin successful',
+  USER_SIGNOUT: 'Signout successful',
+  USER_CURRENT: 'Current user',
+  SIGNIN_FAILED: 'Please verify your email or email/password is wrong',
 };
 
 const FILE_SIZE = {

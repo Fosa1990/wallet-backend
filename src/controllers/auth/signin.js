@@ -4,7 +4,7 @@ const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 
 // http://localhost:8081/api/auth/signin
 // METHOD: POST
-const signin = async (req, res, next) => {
+const signin = async (req, res) => {
   const { email, password } = req.body;
   const userExist = await User.findOne({ email });
 
@@ -28,6 +28,7 @@ const signin = async (req, res, next) => {
         email: userExist.email,
         avatarURL: userExist.avatarURL,
       },
+      message: MESSAGE.USER_SIGNIN,
     },
   });
 };

@@ -15,7 +15,6 @@ const {
   mainErrorHandler,
 } = require('./src/service/errorHandlers');
 const { apiLimit } = require('./src/config/rateLimit.json');
-
 const { swaggerUI, swaggerSpec } = require('./src/helpers/swagger');
 
 const app = express();
