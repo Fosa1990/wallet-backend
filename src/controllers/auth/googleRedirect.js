@@ -3,8 +3,13 @@ const axios = require('axios');
 const { User } = require('../../models');
 const generator = require('generate-password');
 
-const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, BASE_URL, HEROKU_HOST } =
-  process.env;
+const {
+  GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET,
+  BASE_URL,
+  HEROKU_HOST,
+  /* FRONTEND_URL, */
+} = process.env;
 
 // http://localhost:8081/api/auth/google-redirect
 const googleRedirect = async (req, res) => {
@@ -54,6 +59,8 @@ const googleRedirect = async (req, res) => {
 
   await userExist.setToken();
   await userExist.save();
+  // TODO: add redirect to dashboard frontend page
+  // return res.redirect(`${FRONTEND_URL}/dashboard?token=${userExist.token}`);
   return res.redirect(`${HEROKU_HOST}/dashboard?token=${userExist.token}`);
 };
 
