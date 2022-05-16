@@ -17,6 +17,7 @@ const current = async (req, res, next) => {
       user: {
         name: userExist.name,
         email: userExist.email,
+        balance: userExist.balance,
         avatarURL: userExist.avatarURL,
       },
     },
