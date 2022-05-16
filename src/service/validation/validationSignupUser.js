@@ -24,6 +24,16 @@ const validationSignupUser = Joi.object({
       'any.required': 'Password is required',
       'string.empty': 'The password cannot be empty',
     }),
+  confirmPassword: Joi
+    // .ref('password')
+    .string()
+    .min(USER_LIMIT.PASSWORD.MIN)
+    .max(USER_LIMIT.PASSWORD.MAX)
+    .optional()
+    .messages({
+      'any.optional': "Password isn't required",
+      'string.empty': 'The confirm password cannot be empty',
+    }),
   avatarURL: Joi.string().optional().default(null).messages({
     'any.optional': "avatarURL isn't required",
     'string.empty': 'The avatarURL cannot be empty',

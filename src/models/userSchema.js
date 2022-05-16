@@ -40,6 +40,11 @@ const userSchema = new Schema(
         'Password is required and must be at least 6 characters long',
       ],
     },
+    confirmPassword: {
+      type: String,
+      minlength: USER_LIMIT.PASSWORD.MIN,
+      required: [false, "Confirm Password isn't required"],
+    },
     avatarURL: {
       type: String,
       required: [false, "Avatar isn't required"],
