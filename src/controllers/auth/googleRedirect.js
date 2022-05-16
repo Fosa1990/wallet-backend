@@ -1,7 +1,8 @@
 const queryString = require('query-string');
 const axios = require('axios');
-const { User } = require('../../models');
 const generator = require('generate-password');
+const { User } = require('../../models');
+const { PORT } = require('../../helpers/constants');
 
 const {
   GOOGLE_CLIENT_ID,
@@ -23,7 +24,7 @@ const googleRedirect = async (req, res) => {
     data: {
       client_id: GOOGLE_CLIENT_ID,
       client_secret: GOOGLE_CLIENT_SECRET,
-      redirect_uri: `${BASE_URL}/api/auth/google-redirect`,
+      redirect_uri: `${BASE_URL}${PORT}/api/auth/google-redirect`,
       grant_type: 'authorization_code',
       code,
     },
