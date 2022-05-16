@@ -1,3 +1,3 @@
 # Amazing wallet backend
 
-Backend server: [Heroku-server](https://amazing-wallet.herokuapp.com/)
+[Amazing wallet API Docs](https://amazing-wallet.herokuapp.com/api/docs/)
