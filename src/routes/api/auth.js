@@ -68,6 +68,7 @@ const {
  */
 
 // http://localhost:8081/api/auth/signup
+// https://amazing-wallet.herokuapp.com/api/auth/signup
 router
   /**
    * @openapi
@@ -223,6 +224,7 @@ router
   .post('/signup', validateBody(validationSignupUser), tryCatchWrapper(signup));
 
 // http://localhost:8081/api/auth/signin
+// https://amazing-wallet.herokuapp.com/api/auth/signin
 router
   /**
    * @openapi
@@ -364,11 +366,12 @@ router
   .post('/signin', validateBody(validationSigninUser), tryCatchWrapper(signin));
 
 // http://localhost:8081/api/auth/signout
+// https://amazing-wallet.herokuapp.com/api/auth/signout
 router
   /**
    * @openapi
    * /api/auth/signout:
-   *   post:
+   *   get:
    *     tags: [Auth]
    *     description: End-point for signout users
    *     summary: Signout users
@@ -420,6 +423,7 @@ router
   .get('/signout', validateAuth, tryCatchWrapper(signout));
 
 // http://localhost:8081/api/auth/google
+// https://amazing-wallet.herokuapp.com/api/auth/google
 router
   /**
    * @openapi
@@ -435,9 +439,11 @@ router
    *       403:
    *         description: Not registered or registered with postman
    *         content: {}
-   */ .get('/google', tryCatchWrapper(googleAuth));
+   */
+  .get('/google', tryCatchWrapper(googleAuth));
 
 // http://localhost:8081/api/auth/google-redirect
+// https://amazing-wallet.herokuapp.com/api/auth/google-redirect
 router.get('/google-redirect', tryCatchWrapper(googleRedirect));
 
 module.exports = router;

@@ -3,6 +3,7 @@ const { User } = require('../../models');
 const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 
 // http://localhost:8081/api/users/current
+// https://amazing-wallet.herokuapp.com/api/users/current
 // METHOD: GET
 const current = async (req, res) => {
   const { id } = req.user;
