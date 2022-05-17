@@ -12,6 +12,8 @@ const verifyEmail = async (req, res) => {
 
   if (!userExist) throw new NotFound(`Not found user`);
 
+  // TODO: тимчасово верифікований поки розробляємо авторизацію
+  // userExist.setToBase(false);
   userExist.verifyUser(true);
   userExist.verifyToken(null);
   await userExist.save();

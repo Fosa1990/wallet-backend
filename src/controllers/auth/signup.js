@@ -19,6 +19,8 @@ const signup = async (req, res) => {
     email,
     verificationToken,
   });
+  // TODO: тимчасово верифікований поки розробляємо авторизацію
+  // newUser.verifyUser(true);
   newUser.verifyUser(false);
   newUser.setToBase(true);
   newUser.verifyToken(verificationToken);
