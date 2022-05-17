@@ -6,6 +6,7 @@ const {
 const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 
 // http://localhost:8081/api/transactions
+// https://amazing-wallet.herokuapp.com/api/transactions
 // METHOD: POST
 const createTransaction = async (req, res) => {
   const { balance, _id } = req.user;

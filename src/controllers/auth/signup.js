@@ -5,6 +5,7 @@ const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 const { sendEmail, emailConfig } = require('../../service/emailService');
 
 // http://localhost:8081/api/auth/signup
+// https://amazing-wallet.herokuapp.com/api/auth/signup
 // METHOD: POST
 const signup = async (req, res) => {
   const { name, email, password } = req.body;
@@ -19,7 +20,10 @@ const signup = async (req, res) => {
     email,
     verificationToken,
   });
+  // TODO: тимчасово верифікований поки розробляємо авторизацію
+  // newUser.verifyUser(true);
   newUser.verifyUser(false);
+  newUser.setToBase(true);
   newUser.verifyToken(verificationToken);
   newUser.setHashPassword(password);
   newUser.setAvatar();
@@ -42,6 +46,7 @@ const signup = async (req, res) => {
         balance: newUser.balance,
         avatarURL: newUser.avatarURL,
         isVerified: newUser.isVerified,
+        isInBase: newUser.isInBase,
         verificationToken: newUser.verificationToken,
       },
       message: `${MESSAGE.USER_CREATED} ${newUser.email}`,

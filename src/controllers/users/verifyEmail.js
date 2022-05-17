@@ -4,6 +4,7 @@ const { STATUS, HTTP_CODE } = require('../../helpers/constants');
 // const { FRONTEND_URL } = process.env;
 
 // http://localhost:8081/api/users/verify/:verificationToken
+// https://amazing-wallet.herokuapp.com/api/users/verify/:verificationToken
 // METHOD: GET
 const verifyEmail = async (req, res) => {
   const { verificationToken } = req.params;
@@ -12,11 +13,13 @@ const verifyEmail = async (req, res) => {
 
   if (!userExist) throw new NotFound(`Not found user`);
 
+  // TODO: тимчасово верифікований поки розробляємо авторизацію
+  // userExist.setToBase(false);
   userExist.verifyUser(true);
   userExist.verifyToken(null);
   await userExist.save();
 
-  // add redirect to login frontend page
+  // TODO: add redirect to login frontend page
   // return res.redirect(
   //   `${FRONTEND_URL}/api/auth/login?email=${userExist.email}&isVerified=${userExist.isVerified}`,
   // );

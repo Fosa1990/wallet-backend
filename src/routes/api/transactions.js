@@ -91,6 +91,7 @@ const {
  */
 
 // http://localhost:8081/api/transactions
+// https://amazing-wallet.herokuapp.com/api/transactions
 router
   /**
    * @openapi
@@ -218,6 +219,7 @@ router
   );
 
 // http://localhost:8081/api/transactions
+// https://amazing-wallet.herokuapp.com/api/transactions
 router
   /**
    * @openapi
@@ -332,6 +334,7 @@ router
   .get('/', validateAuth, tryCatchWrapper(getAllTransactions));
 
 // http://localhost:8081/api/transactions/transactionId
+// https://amazing-wallet.herokuapp.com/api/transactions/transactionId
 router
   /**
    * @openapi
@@ -456,6 +459,7 @@ router
   .get('/:transactionId', validateAuth, tryCatchWrapper(getByIdTransaction));
 
 // http://localhost:8081/api/transactions/transactionId
+// https://amazing-wallet.herokuapp.com/api/transactions/transactionId
 router
   /**
    * @openapi
@@ -532,6 +536,7 @@ router
   .delete('/:transactionId', validateAuth, tryCatchWrapper(deleteTransaction));
 
 // http://localhost:8081/api/transactions/transactionId
+// https://amazing-wallet.herokuapp.com/api/transactions/transactionId
 router
   /**
    * @openapi

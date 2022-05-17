@@ -5,6 +5,9 @@ const {
 } = require('../../service/balanceCalculation');
 const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 
+// http://localhost:8081/api/transactions/transactionId
+// https://amazing-wallet.herokuapp.com/api/transactions/transactionId
+// METHOD: PUT
 const updateByIdTransaction = async (req, res) => {
   const { _id } = req.user;
   const { transactionType, sum } = req.body;

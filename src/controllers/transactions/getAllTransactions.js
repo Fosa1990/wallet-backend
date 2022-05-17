@@ -2,6 +2,7 @@ const { Transaction } = require('../../models');
 const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 
 // http://localhost:8081/api/transactions
+// https://amazing-wallet.herokuapp.com/api/transactions
 // METHOD: GET
 const getAllTransactions = async (req, res) => {
   const transactions = await Transaction.find({ owner: req.user._id }).populate(

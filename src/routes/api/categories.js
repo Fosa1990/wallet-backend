@@ -23,6 +23,7 @@ const { validateAuth, tryCatchWrapper } = require('../../middlewares');
  */
 
 // http://localhost:8081/api/categories?year=2022&month=10
+// https://amazing-wallet.herokuapp.com/api/categories?year=2022&month=10
 router
   /**
    * @openapi

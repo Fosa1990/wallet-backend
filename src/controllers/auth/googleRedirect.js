@@ -13,6 +13,7 @@ const {
 } = process.env;
 
 // http://localhost:8081/api/auth/google-redirect
+// https://amazing-wallet.herokuapp.com/api/auth/google-redirect
 const googleRedirect = async (req, res) => {
   const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
   const urlObj = new URL(fullUrl);
