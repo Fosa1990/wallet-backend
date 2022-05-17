@@ -428,7 +428,7 @@ router
   /**
    * @openapi
    * /api/auth/google:
-   *   post:
+   *   get:
    *     tags: [Auth]
    *     description: Google authentication
    *     summary: Google authentication
