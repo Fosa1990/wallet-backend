@@ -135,6 +135,10 @@ router
    *                           type: bool
    *                           description: Is user verify email?
    *                           example: false
+   *                         isInBase:
+   *                           type: bool
+   *                           description: Is user in db?
+   *                           example: false
    *                         verificationToken:
    *                           type: string
    *                           description: The verify token of the user.

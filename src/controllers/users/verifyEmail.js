@@ -16,7 +16,7 @@ const verifyEmail = async (req, res) => {
   userExist.verifyToken(null);
   await userExist.save();
 
-  // add redirect to login frontend page
+  // TODO: add redirect to login frontend page
   // return res.redirect(
   //   `${FRONTEND_URL}/api/auth/login?email=${userExist.email}&isVerified=${userExist.isVerified}`,
   // );

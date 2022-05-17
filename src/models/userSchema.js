@@ -63,6 +63,10 @@ const userSchema = new Schema(
       type: String,
       default: null,
     },
+    isInBase: {
+      type: Boolean,
+      default: false,
+    },
   },
   { versionKey: false, timestamps: true },
 );
@@ -90,6 +94,10 @@ userSchema.methods.verifyToken = function (updateToken) {
 
 userSchema.methods.setAvatar = function () {
   this.avatarURL = gravatar.url(this.email, { s: '250' }, true);
+};
+
+userSchema.methods.setToBase = function (updateIsInBase) {
+  this.isInBase = updateIsInBase;
 };
 
 module.exports = userSchema;

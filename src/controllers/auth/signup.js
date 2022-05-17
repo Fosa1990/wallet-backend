@@ -20,6 +20,7 @@ const signup = async (req, res) => {
     verificationToken,
   });
   newUser.verifyUser(false);
+  newUser.setToBase(true);
   newUser.verifyToken(verificationToken);
   newUser.setHashPassword(password);
   newUser.setAvatar();
@@ -41,6 +42,7 @@ const signup = async (req, res) => {
         email: newUser.email,
         avatarURL: newUser.avatarURL,
         isVerified: newUser.isVerified,
+        isInBase: newUser.isInBase,
         verificationToken: newUser.verificationToken,
       },
       message: `${MESSAGE.USER_CREATED} ${newUser.email}`,
