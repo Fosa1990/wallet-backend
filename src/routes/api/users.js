@@ -20,6 +20,7 @@ const { validationEmail } = require('../../service/validation');
  *         - name
  *         - email
  *         - password
+ *         - confirmPassword
  *       properties:
  *         id:
  *           type: string
@@ -36,6 +37,9 @@ const { validationEmail } = require('../../service/validation');
  *         confirmPassword:
  *           type: string
  *           description: The password of the user
+ *         balance:
+ *           type: number
+ *           description: The user's balance
  *         isVerified:
  *           type: boolean
  *           description: Is user verify email?

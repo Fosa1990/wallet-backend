@@ -57,10 +57,10 @@ const {
  *           description: The date of create transaction
  *         sum:
  *           type: Number
- *           description: Value of income or spend
+ *           description: Sum of income and spend values
  *         balance:
  *           type: Number
- *           description: Sum of income and spend values
+ *           description: The user's balance
  *         comment:
  *           type: string
  *           description: The comment to transaction
