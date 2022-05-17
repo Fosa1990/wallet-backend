@@ -1,5 +1,5 @@
 const { Transaction } = require('../../models');
-const { STATUS, HTTP_CODE } = require('../../helpers/constants');
+const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 
 // http://localhost:8081/api/categories?year=2022&month=10
 // METHOD: GET
@@ -48,7 +48,7 @@ const getAllCategories = async (req, res) => {
     status: STATUS.SUCCESS,
     code: HTTP_CODE.OK,
     payload: {
-      message: 'Categories loaded successfully',
+      message: MESSAGE.LOADED_SUCCESSFUL,
       categories,
     },
   });

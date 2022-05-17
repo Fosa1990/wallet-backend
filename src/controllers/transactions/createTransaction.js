@@ -3,7 +3,7 @@ const { User } = require('../../models');
 const {
   balanceCreateTransaction,
 } = require('../../service/balanceCalculation');
-const { STATUS, HTTP_CODE } = require('../../helpers/constants');
+const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 
 // http://localhost:8081/api/transactions
 // METHOD: POST
@@ -32,7 +32,7 @@ const createTransaction = async (req, res) => {
     status: STATUS.CREATED,
     code: HTTP_CODE.CREATED,
     payload: {
-      message: 'Transaction created successfully',
+      message: MESSAGE.CREATED_SUCCESSFUL,
       transaction,
     },
   });

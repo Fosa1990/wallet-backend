@@ -1,10 +1,11 @@
 const balanceCreateTransaction = (transactionType, balance, sum) => {
   let newBalance = balance;
+  const numberSum = Number(sum);
 
   if (transactionType === 'income') {
-    newBalance = newBalance + Number(sum);
+    newBalance += numberSum;
   } else if (transactionType === 'spend') {
-    newBalance = newBalance - Number(sum);
+    newBalance -= numberSum;
   }
 
   return newBalance;

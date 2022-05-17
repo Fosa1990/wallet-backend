@@ -7,13 +7,13 @@ const getByIdTransaction = async (req, res) => {
   const transaction = await Transaction.findOne({
     _id: req.params.transactionId,
     owner: req.user._id,
-  }).populate('owner', '_id name email');
+  }).populate('owner', '_id name email balance');
   if (transaction) {
     res.status(HTTP_CODE.OK).json({
       status: STATUS.SUCCESS,
       code: HTTP_CODE.OK,
       payload: {
-        message: 'Transaction loaded successfully',
+        message: MESSAGE.LOADED_SUCCESSFUL,
         transaction,
       },
     });
