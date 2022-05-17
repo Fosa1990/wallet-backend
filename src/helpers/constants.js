@@ -45,6 +45,10 @@ const MESSAGE = {
   USER_SIGNOUT: 'Signout successful',
   USER_CURRENT: 'Current user',
   SIGNIN_FAILED: 'Please verify your email or email/password is wrong',
+  CREATED_SUCCESSFUL: 'Created successful',
+  LOADED_SUCCESSFUL: 'Loaded successful',
+  DELETED_SUCCESSFUL: 'Deleted successful',
+  UPDATED_SUCCESSFUL: 'Updated successful',
 };
 
 const FILE_SIZE = {

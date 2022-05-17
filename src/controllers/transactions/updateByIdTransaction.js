@@ -5,41 +5,6 @@ const {
 } = require('../../service/balanceCalculation');
 const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 
-// http://localhost:8081/api/transactions/transactionId
-// METHOD: PUT
-// const updateByIdTransaction = async (req, res) => {
-//   const transaction = await Transaction.findOneAndUpdate(
-//     {
-//       _id: req.params.transactionId,
-//       owner: req.user._id,
-//     },
-//     { ...req.body },
-//     {
-//       new: true,
-//     },
-//   ).populate('owner', '_id name email');
-//   if (transaction) {
-//     res.status(HTTP_CODE.OK).json({
-//       status: STATUS.SUCCESS,
-//       code: HTTP_CODE.OK,
-//       payload: {
-//         message: 'Transaction updated successfully',
-//         transaction,
-//       },
-//     });
-//   } else {
-//     return res.status(HTTP_CODE.NOT_FOUND).json({
-//       status: STATUS.ERROR,
-//       code: HTTP_CODE.NOT_FOUND,
-//       payload: {
-//         message: MESSAGE.NOT_FOUND,
-//       },
-//     });
-//   }
-// };
-
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 const updateByIdTransaction = async (req, res) => {
   const { _id } = req.user;
   const { transactionType, sum } = req.body;
@@ -72,10 +37,7 @@ const updateByIdTransaction = async (req, res) => {
 
       await Transaction.updateMany(
         {
-          $and: [
-            { owner: _id },
-            { createdAt: { $gte: checkTransaction.createdAt } },
-          ],
+          $and: [{ owner: _id }, { date: { $gte: checkTransaction.date } }],
         },
         { $inc: { balance: newBalance } },
       );
@@ -96,12 +58,12 @@ const updateByIdTransaction = async (req, res) => {
       {
         new: true,
       },
-    ).populate('owner', '_id name email');
+    ).populate('owner', '_id name email balance');
     return res.status(HTTP_CODE.OK).json({
       status: STATUS.SUCCESS,
       code: HTTP_CODE.OK,
       payload: {
-        message: 'Transaction updated successfully',
+        message: MESSAGE.UPDATED_SUCCESSFUL,
         transaction,
       },
     });

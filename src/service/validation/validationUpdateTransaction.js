@@ -1,37 +1,28 @@
 const Joi = require('joi');
+const category = require('../../helpers/category');
+const transactionType = require('../../helpers/transactionType');
 
 const validationUpdateTransaction = Joi.object({
   date: Joi.string().optional().messages({
     'string.empty': 'The date cannot be empty',
   }),
   transactionType: Joi.string()
-    .valid('spend', 'income')
+    .valid(...transactionType)
     .lowercase()
     .optional()
     .messages({
       'string.empty': 'The transaction type cannot be empty',
-      'any.only': 'Transaction type must be one of: spend, income',
+      'any.only': `Transaction type must be one of: ${transactionType.join(
+        ', ',
+      )}`,
     }),
   category: Joi.string()
-    .valid(
-      'basic spend',
-      'products',
-      'car',
-      'household products',
-      'self care',
-      'child care',
-      'education',
-      'leisure',
-      'other spend',
-      'regular income',
-      'irregular income',
-    )
+    .valid(...category)
     .lowercase()
     .optional()
     .messages({
       'string.empty': 'The category cannot be empty',
-      'any.only':
-        'Category must be one of: basic spend, products, car, household products, self care, child care, education, leisure, other spend, regular income, irregular income',
+      'any.only': `Category must be one of: ${category.join(', ')}`,
     }),
   sum: Joi.number().optional().messages({
     'string.empty': 'The sum cannot be empty',

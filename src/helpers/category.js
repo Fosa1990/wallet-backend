@@ -8,8 +8,7 @@ const category = [
   'education',
   'leisure',
   'other spend',
-  'regular income',
-  'irregular income',
+  'income',
 ];
 
 module.exports = category;
