@@ -21,7 +21,7 @@ const app = express();
 
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
 
-app.use(cors());
+app.use(cors({ origin: true, credentials: true }));
 app.use(limiter(apiLimit));
 app.use(helmet());
 app.use(logger(formatsLogger));
