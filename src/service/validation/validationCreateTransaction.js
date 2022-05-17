@@ -1,4 +1,6 @@
 const Joi = require('joi');
+const category = require('../../helpers/category');
+const transactionType = require('../../helpers/transactionType');
 
 const validationCreateTransaction = Joi.object({
   date: Joi.string().required().messages({
@@ -6,34 +8,23 @@ const validationCreateTransaction = Joi.object({
     'any.required': 'Date is required',
   }),
   transactionType: Joi.string()
-    .valid('spend', 'income')
+    .valid(...transactionType)
     .lowercase()
     .required()
     .messages({
       'string.empty': 'The transaction type cannot be empty',
-      'any.only': 'Transaction type must be one of: spend, income',
+      'any.only': `Transaction type must be one of: ${transactionType.join(
+        ', ',
+      )}`,
       'any.required': 'Transaction type is required',
     }),
   category: Joi.string()
-    .valid(
-      'basic spend',
-      'products',
-      'car',
-      'household products',
-      'self care',
-      'child care',
-      'education',
-      'leisure',
-      'other spend',
-      'regular income',
-      'irregular income',
-    )
+    .valid(...category)
     .lowercase()
     .required()
     .messages({
       'string.empty': 'The category cannot be empty',
-      'any.only':
-        'Category must be one of: basic spend, products, car, household products, self care, child care, education, leisure, other spend, regular income, irregular income',
+      'any.only': `Category must be one of: ${category.join(', ')}`,
       'any.required': 'Category is required',
     }),
   sum: Joi.number().required().messages({
@@ -44,10 +35,6 @@ const validationCreateTransaction = Joi.object({
     'string.empty': 'The comment cannot be empty',
     'string.max': 'Max 250 characters',
     'any.required': 'Comment is required',
-  }),
-  balance: Joi.number().required().messages({
-    'string.empty': 'The balance cannot be empty',
-    'any.required': 'Balance is required',
   }),
 });
 

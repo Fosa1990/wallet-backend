@@ -43,6 +43,7 @@ const signup = async (req, res) => {
       user: {
         name: newUser.name,
         email: newUser.email,
+        balance: newUser.balance,
         avatarURL: newUser.avatarURL,
         isVerified: newUser.isVerified,
         isInBase: newUser.isInBase,

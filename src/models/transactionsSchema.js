@@ -1,4 +1,6 @@
 const { Schema, Types } = require('mongoose');
+const category = require('../helpers/category');
+const transactionType = require('../helpers/transactionType');
 
 const transactionsSchema = new Schema(
   {
@@ -10,25 +12,13 @@ const transactionsSchema = new Schema(
     transactionType: {
       type: String,
       lowercase: true,
-      enum: ['spend', 'income'],
+      enum: transactionType,
       required: [true, 'Transaction type is required'],
     },
     category: {
       type: String,
       lowercase: true,
-      enum: [
-        'basic spend',
-        'products',
-        'car',
-        'household products',
-        'self care',
-        'child care',
-        'education',
-        'leisure',
-        'other spend',
-        'regular income',
-        'irregular income',
-      ],
+      enum: category,
       required: [true, 'Category is required'],
     },
     sum: {
@@ -44,6 +34,7 @@ const transactionsSchema = new Schema(
     },
     balance: {
       type: Number,
+      min: '0',
       required: [true, 'Balance is required'],
     },
     owner: {

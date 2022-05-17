@@ -1,5 +1,5 @@
 const { Transaction } = require('../../models');
-const { STATUS, HTTP_CODE } = require('../../helpers/constants');
+const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 
 // http://localhost:8081/api/transactions
 // https://amazing-wallet.herokuapp.com/api/transactions
@@ -7,13 +7,13 @@ const { STATUS, HTTP_CODE } = require('../../helpers/constants');
 const getAllTransactions = async (req, res) => {
   const transactions = await Transaction.find({ owner: req.user._id }).populate(
     'owner',
-    '_id name email',
+    '_id name email balance',
   );
   res.status(HTTP_CODE.OK).json({
     status: STATUS.SUCCESS,
     code: HTTP_CODE.OK,
     payload: {
-      message: 'Transactions loaded successfully',
+      message: MESSAGE.LOADED_SUCCESSFUL,
       transactions,
     },
   });

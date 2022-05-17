@@ -81,7 +81,7 @@ const {
  *       example:
  *         date: "2021-08-23T00:00:00.000+00:00"
  *         transactionType: "spend"
- *         category: "irregular income"
+ *         category: "car"
  *         sum: 2000
  *         comment: "some comment"
  *         balance: 9000
@@ -123,7 +123,7 @@ router
    *                 example : some coment
    *               category:
    *                 type: string
-   *                 example : irregular income
+   *                 example : income
    *     responses:
    *       201:
    *         description: Created
@@ -163,7 +163,7 @@ router
    *                       example: 12000
    *                     category:
    *                       type: string
-   *                       example : irregular income
+   *                       example : income
    *                     owner:
    *                       type: string
    *                       example : 62818a765945edf6a8c38c3c
@@ -272,7 +272,7 @@ router
    *                               example: 9200.75
    *                             category:
    *                               type: string
-   *                               example: "irregular income"
+   *                               example: "income"
    *                             owner:
    *                               type: object
    *                               properties:
@@ -397,7 +397,7 @@ router
    *                         example: "some comment"
    *                        category:
    *                         type: string
-   *                         example: "irregular income"
+   *                         example: "income"
    *                        owner:
    *                         type: object
    *                         properties:
@@ -615,7 +615,7 @@ router
    *                         example: "some comment"
    *                        category:
    *                         type: string
-   *                         example: "regular income"
+   *                         example: "income"
    *                        owner:
    *                         type: object
    *                         properties:

@@ -19,7 +19,7 @@ const { validateAuth, tryCatchWrapper } = require('../../middlewares');
  *           type: string
  *           description: Enumerable category.
  *       example:
- *         _id: basic spend, products, car, household products, self care, child care, education, leisure, other spend, regular income, irregular income,
+ *         _id: basic spend, products, car, household products, self care, child care, education, leisure, other spend, income,
  */
 
 // http://localhost:8081/api/categories?year=2022&month=10
@@ -65,7 +65,7 @@ router
    *                     categories:
    *                       type: Array
    *                       description: Array of categories.
-   *                       example: ["transactionType" : [{"_id" : "spend","totalSum" : 1111}],{"category" : [{"_id" : "irregular income","totalSum" : 1111}]}]
+   *                       example: ["transactionType" : [{"_id" : "spend","totalSum" : 1111}],{"category" : [{"_id" : "income","totalSum" : 1111}]}]
    *                     message:
    *                       type: string
    *                       description: Service message
