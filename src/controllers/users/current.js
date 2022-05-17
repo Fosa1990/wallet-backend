@@ -15,6 +15,7 @@ const current = async (req, res) => {
     status: STATUS.SUCCESS,
     code: HTTP_CODE.OK,
     payload: {
+      token: userExist.token,
       user: {
         id: userExist.id,
         name: userExist.name,

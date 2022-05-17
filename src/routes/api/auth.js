@@ -46,6 +46,9 @@ const {
  *         confirmPassword:
  *           type: string
  *           description: The password of the user
+ *         balance:
+ *           type: number
+ *           description: The user's balance
  *         isVerified:
  *           type: boolean
  *           description: Is user verify email?
@@ -120,6 +123,10 @@ router
    *                           type: string
    *                           description: The user's email.
    *                           example: test@gmail.com
+   *                         balance:
+   *                           type: double
+   *                           description: The user's balance.
+   *                           example: 10000
    *                         avatarURL:
    *                           type: string
    *                           description: The avatar url of the user.
@@ -265,6 +272,10 @@ router
    *                           type: string
    *                           description: The user's email.
    *                           example: test@gmail.com
+   *                         balance:
+   *                           type: double
+   *                           description: The user's balance.
+   *                           example: 5000
    *                         avatarURL:
    *                           type: string
    *                           description: The avatar url of the user.
