@@ -48,14 +48,14 @@ const googleRedirect = async (req, res) => {
     newUser.setHashPassword(password);
     newUser.setToken();
     await newUser.save();
-    // TODO: add redirect to dashboard frontend page
+    // TODO: CHANGE redirect to dashboard frontend page
     // return res.redirect(`${FRONTEND_URL}/dashboard?token=${userExist.token}`);
     return res.redirect(`${HEROKU_HOST}/dashboard?token=${newUser.token}`);
   }
 
   await userExist.setToken();
   await userExist.save();
-  // TODO: add redirect to dashboard frontend page
+  // TODO: CHANGE redirect to dashboard frontend page
   // return res.redirect(`${FRONTEND_URL}/dashboard?token=${userExist.token}`);
   return res.redirect(`${HEROKU_HOST}/dashboard?token=${userExist.token}`);
 };
