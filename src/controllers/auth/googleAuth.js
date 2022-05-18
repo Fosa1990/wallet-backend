@@ -1,8 +1,6 @@
 const queryString = require('query-string');
-// const { PORT } = require('../../helpers/constants');
-const { GOOGLE_CLIENT_ID, /* BASE_URL, */ HEROKU_HOST } = process.env;
+const { GOOGLE_CLIENT_ID, HEROKU_HOST } = process.env;
 
-// http://localhost:8081/api/auth/google
 // https://amazing-wallet.herokuapp.com/api/auth/google
 const googleAuth = async (req, res) => {
   const stringifiedParams = queryString.stringify({

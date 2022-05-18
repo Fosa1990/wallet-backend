@@ -2,17 +2,9 @@ const queryString = require('query-string');
 const axios = require('axios');
 const generator = require('generate-password');
 const { User } = require('../../models');
-// const { PORT } = require('../../helpers/constants');
 
-const {
-  GOOGLE_CLIENT_ID,
-  GOOGLE_CLIENT_SECRET,
-  /* BASE_URL, */
-  HEROKU_HOST,
-  /* FRONTEND_URL, */
-} = process.env;
+const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, HEROKU_HOST } = process.env;
 
-// http://localhost:8081/api/auth/google-redirect
 // https://amazing-wallet.herokuapp.com/api/auth/google-redirect
 const googleRedirect = async (req, res) => {
   const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
@@ -25,7 +17,6 @@ const googleRedirect = async (req, res) => {
     data: {
       client_id: GOOGLE_CLIENT_ID,
       client_secret: GOOGLE_CLIENT_SECRET,
-      // redirect_uri: `${BASE_URL}${PORT}/api/auth/google-redirect`,
       redirect_uri: `${HEROKU_HOST}/api/auth/google-redirect`,
       grant_type: 'authorization_code',
       code,
@@ -57,6 +48,8 @@ const googleRedirect = async (req, res) => {
     newUser.setHashPassword(password);
     newUser.setToken();
     await newUser.save();
+    // TODO: add redirect to dashboard frontend page
+    // return res.redirect(`${FRONTEND_URL}/dashboard?token=${userExist.token}`);
     return res.redirect(`${HEROKU_HOST}/dashboard?token=${newUser.token}`);
   }
 
