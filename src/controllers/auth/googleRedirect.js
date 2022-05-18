@@ -3,7 +3,8 @@ const axios = require('axios');
 const generator = require('generate-password');
 const { User } = require('../../models');
 
-const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, HEROKU_HOST } = process.env;
+const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, HEROKU_HOST, FRONTEND_URL } =
+  process.env;
 
 // https://amazing-wallet.herokuapp.com/api/auth/google-redirect
 const googleRedirect = async (req, res) => {
@@ -29,7 +30,7 @@ const googleRedirect = async (req, res) => {
       Authorization: `Bearer ${tokenData.data.access_token}`,
     },
   });
-  const { email } = userData.data;
+  const { email, given_name: name, picture: avatarURL } = userData.data;
   const userExist = await User.findOne({ email });
 
   if (!userExist) {
@@ -38,10 +39,10 @@ const googleRedirect = async (req, res) => {
       numbers: true,
     });
     const newUser = new User({
-      name: userData.data.given_name,
-      email: userData.data.email,
+      name,
+      email,
       password,
-      avatarURL: userData.data.picture,
+      avatarURL,
     });
     newUser.verifyUser(true);
     newUser.verifyToken(null);
@@ -49,15 +50,15 @@ const googleRedirect = async (req, res) => {
     newUser.setToken();
     await newUser.save();
     // TODO: CHANGE redirect to dashboard frontend page
-    // return res.redirect(`${FRONTEND_URL}/dashboard?token=${userExist.token}`);
-    return res.redirect(`${HEROKU_HOST}/dashboard?token=${newUser.token}`);
+    return res.redirect(`${FRONTEND_URL}/dashboard?token=${userExist.token}`);
+    // return res.redirect(`${HEROKU_HOST}/dashboard?token=${newUser.token}`);
   }
 
   await userExist.setToken();
   await userExist.save();
   // TODO: CHANGE redirect to dashboard frontend page
-  // return res.redirect(`${FRONTEND_URL}/dashboard?token=${userExist.token}`);
-  return res.redirect(`${HEROKU_HOST}/dashboard?token=${userExist.token}`);
+  return res.redirect(`${FRONTEND_URL}/dashboard?token=${userExist.token}`);
+  // return res.redirect(`${HEROKU_HOST}/dashboard?token=${userExist.token}`);
 };
 
 module.exports = googleRedirect;
