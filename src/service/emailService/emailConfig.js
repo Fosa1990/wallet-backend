@@ -1,4 +1,4 @@
-const { HEROKU_HOST /* , FRONTEND_URL */ } = process.env;
+const { HEROKU_HOST /* , FRONTEND_URL , BASE_URL, PORT */ } = process.env;
 const emailConfig = async (name, email, verificationToken) => {
   const htmlTemplate = `
   <h1>Hi ${name}!</h1>
@@ -22,7 +22,7 @@ const emailConfig = async (name, email, verificationToken) => {
   // emailConfig = { to, subject, text, html };
   const config = {
     to: email,
-    subject: 'Confirm email in "Amazing Wallet"',
+    subject: 'Confirm email in "Amazing Wallet" service',
     text: `Please verify your email: ${email}`,
     html: htmlTemplate,
   };
@@ -31,3 +31,5 @@ const emailConfig = async (name, email, verificationToken) => {
 };
 
 module.exports = emailConfig;
+
+//   <p>To verify your email with LOCAL_TESTING: <b>${email}</b> <a target="_blank" href="${BASE_URL}${PORT}/api/users/verify/${verificationToken}">Click here</a>. Thank you (^_^)</p>

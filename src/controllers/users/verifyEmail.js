@@ -1,7 +1,7 @@
 const { NotFound } = require('http-errors');
 const { User } = require('../../models');
-const { STATUS, HTTP_CODE } = require('../../helpers/constants');
-// const { FRONTEND_URL } = process.env;
+// const { STATUS, HTTP_CODE } = require('../../helpers/constants');
+const { /* FRONTEND_URL, */ BASE_URL, PORT_FRONT } = process.env;
 
 // http://localhost:8081/api/users/verify/:verificationToken
 // https://amazing-wallet.herokuapp.com/api/users/verify/:verificationToken
@@ -19,18 +19,10 @@ const verifyEmail = async (req, res) => {
   userExist.verifyToken(null);
   await userExist.save();
 
-  // TODO: add redirect to login frontend page
-  // return res.redirect(
-  //   `${FRONTEND_URL}/api/auth/login?email=${userExist.email}&isVerified=${userExist.isVerified}`,
-  // );
-
-  return res.status(HTTP_CODE.OK).json({
-    status: STATUS.SUCCESS,
-    code: HTTP_CODE.OK,
-    payload: {
-      message: `User: ${userExist.name} successfully verified`,
-    },
-  });
+  // return res.redirect(`${FRONTEND_URL}/verify?email=${userExist.email}&name=${userExist.name}&isVerified=${userExist.isVerified}`);
+  return res.redirect(
+    `${BASE_URL}${PORT_FRONT}/verify?email=${userExist.email}&name=${userExist.name}&isVerified=${userExist.isVerified}`,
+  );
 };
 
 module.exports = verifyEmail;
