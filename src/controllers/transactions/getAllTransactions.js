@@ -18,7 +18,9 @@ const getAllTransactions = async (req, res) => {
       skip,
       limit: numberLimit,
     },
-  ).populate('owner', '_id name email balance');
+  )
+    .sort({ date: -1 })
+    .populate('owner', '_id name email balance');
   const shownDocuments = transactions.length;
   const totalDocuments = await Transaction.countDocuments({
     owner: _id,
