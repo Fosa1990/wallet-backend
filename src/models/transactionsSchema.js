@@ -23,14 +23,13 @@ const transactionsSchema = new Schema(
     },
     sum: {
       type: Number,
-      trim: true,
       required: [true, 'Specify the amount of the transaction'],
     },
     comment: {
       type: String,
       trim: true,
       maxlength: 250,
-      required: [true, 'Comment is required'],
+      default: '',
     },
     balance: {
       type: Number,

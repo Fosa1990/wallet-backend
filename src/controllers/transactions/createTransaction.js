@@ -11,7 +11,9 @@ const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 // METHOD: POST
 const createTransaction = async (req, res) => {
   const { balance, _id } = req.user;
-  const { date, transactionType, sum } = req.body;
+  const { date, transactionType, category, sum, comment } = req.body;
+
+  const newSum = Number(sum.toFixed(2));
 
   const checkTransaction = await Transaction.findOne({
     date: { $lt: date },
@@ -29,11 +31,15 @@ const createTransaction = async (req, res) => {
   const newBalanceCreate = await balanceCreateTransaction(
     transactionType,
     balanceTransaction,
-    sum,
+    newSum,
   );
 
   const transaction = new Transaction({
-    ...req.body,
+    date,
+    transactionType,
+    category,
+    sum: newSum,
+    comment,
     balance: newBalanceCreate,
     owner: _id,
   });
@@ -41,7 +47,7 @@ const createTransaction = async (req, res) => {
 
   const newBalanceUpdate = await balanceCreateUpdateTransaction(
     transactionType,
-    sum,
+    newSum,
   );
 
   await User.updateOne(

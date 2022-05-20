@@ -41,7 +41,6 @@ const {
  *         - transactionType
  *         - category
  *         - sum
- *         - comment
  *         - balance
  *         - owner
  *       properties:

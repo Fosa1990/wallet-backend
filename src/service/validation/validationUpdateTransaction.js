@@ -1,6 +1,7 @@
 const Joi = require('joi');
 const category = require('../../helpers/category');
 const transactionType = require('../../helpers/transactionType');
+const { regexName } = require('../../helpers/regex');
 
 const validationUpdateTransaction = Joi.object({
   date: Joi.string().optional().messages({
@@ -27,8 +28,9 @@ const validationUpdateTransaction = Joi.object({
   sum: Joi.number().optional().messages({
     'string.empty': 'The sum cannot be empty',
   }),
-  comment: Joi.string().max(250).optional().messages({
+  comment: Joi.string().pattern(regexName).max(250).optional().trim().messages({
     'string.empty': 'The comment cannot be empty',
+    'string.pattern.base': 'Enter the desired format!',
     'string.max': 'Max 250 characters',
   }),
 });

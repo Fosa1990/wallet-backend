@@ -5,27 +5,25 @@ const balanceUpdateTransaction = (
   prevTransactionType,
 ) => {
   let newBalance = null;
-  const numberSum = Number(sum);
-  const numberPrevSum = Number(prevSum);
 
   if (prevTransactionType !== transactionType) {
     if (prevTransactionType === 'spend') {
-      newBalance = numberSum + numberPrevSum;
+      newBalance = sum + prevSum;
     } else if (prevTransactionType === 'income') {
-      newBalance = -(numberSum + numberPrevSum);
+      newBalance = -(sum + prevSum);
     }
   } else {
     if (transactionType === 'income') {
-      if (numberSum > numberPrevSum) {
-        newBalance = numberSum - numberPrevSum;
-      } else if (numberSum < numberPrevSum) {
-        newBalance = numberSum - numberPrevSum;
+      if (sum > prevSum) {
+        newBalance = sum - prevSum;
+      } else if (sum < prevSum) {
+        newBalance = sum - prevSum;
       }
     } else if (transactionType === 'spend') {
-      if (numberSum > numberPrevSum) {
-        newBalance = numberPrevSum - numberSum;
-      } else if (numberSum < numberPrevSum) {
-        newBalance = numberPrevSum - numberSum;
+      if (sum > prevSum) {
+        newBalance = prevSum - sum;
+      } else if (sum < prevSum) {
+        newBalance = prevSum - sum;
       }
     }
   }
