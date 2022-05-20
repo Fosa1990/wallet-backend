@@ -10,8 +10,10 @@ const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 // METHOD: PUT
 const updateByIdTransaction = async (req, res) => {
   const { _id } = req.user;
-  const { transactionType, sum } = req.body;
+  const { date, transactionType, category, sum, comment } = req.body;
   const { transactionId } = req.params;
+
+  const newSum = Number(sum.toFixed(2));
 
   const checkTransaction = await Transaction.findOne({
     _id: transactionId,
@@ -29,12 +31,12 @@ const updateByIdTransaction = async (req, res) => {
   } else {
     if (
       checkTransaction.transactionType !== transactionType ||
-      checkTransaction.sum !== sum
+      Number(checkTransaction.sum) !== newSum
     ) {
       const newBalance = await balanceUpdateTransaction(
         transactionType,
-        sum,
-        checkTransaction.sum,
+        newSum,
+        Number(checkTransaction.sum),
         checkTransaction.transactionType,
       );
 
@@ -57,7 +59,7 @@ const updateByIdTransaction = async (req, res) => {
         _id: transactionId,
         owner: _id,
       },
-      { ...req.body },
+      { date, transactionType, category, sum, comment },
       {
         new: true,
       },

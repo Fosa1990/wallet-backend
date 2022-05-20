@@ -1,11 +1,10 @@
 const balanceDeleteTransaction = (transactionType, sum) => {
   let newBalance = null;
-  const numberSum = Number(sum);
 
   if (transactionType === 'income') {
-    newBalance = -numberSum;
+    newBalance = -sum;
   } else if (transactionType === 'spend') {
-    newBalance = numberSum;
+    newBalance = sum;
   }
 
   return newBalance;
