@@ -47,7 +47,6 @@ const userSchema = new Schema(
     },
     balance: {
       type: Number,
-      min: '0',
       required: [true, 'Balance is required'],
       default: 0,
     },
@@ -96,10 +95,6 @@ userSchema.methods.verifyUser = function (updateVerification) {
 
 userSchema.methods.verifyToken = function (updateToken) {
   this.verificationToken = updateToken;
-};
-
-userSchema.methods.setBalance = function (updateBalance) {
-  this.balance = updateBalance;
 };
 
 userSchema.methods.setAvatar = function () {
