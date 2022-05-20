@@ -1,5 +1,5 @@
-const balanceCreateTransaction = (transactionType, balance, sum) => {
-  let newBalance = balance;
+const balanceCreateTransaction = (transactionType, balanceTransaction, sum) => {
+  let newBalance = balanceTransaction;
   const numberSum = Number(sum);
 
   if (transactionType === 'income') {
