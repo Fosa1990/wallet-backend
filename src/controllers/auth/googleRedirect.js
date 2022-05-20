@@ -56,23 +56,22 @@ const googleRedirect = async (req, res) => {
     newUser.verifyToken(null);
     newUser.setHashPassword(password);
     newUser.setToken();
+    newUser.setToBase(true);
     await newUser.save();
     // TODO: CHANGE redirect to dashboard frontend page
-    return res.redirect(
-      `${BASE_URL}${PORT_FRONT}/dashboard?token=${userExist.token}`,
-    );
     // return res.redirect(`${FRONTEND_URL}/dashboard?token=${userExist.token}`);
-    // return res.redirect(`${HEROKU_HOST}/dashboard?token=${newUser.token}`);
+    return res.redirect(
+      `${BASE_URL}${PORT_FRONT}/dashboard/?token=${userExist.token}`,
+    );
   }
 
-  await userExist.setToken();
+  userExist.setToken();
   await userExist.save();
   // TODO: CHANGE redirect to dashboard frontend page
-  return res.redirect(
-    `${BASE_URL}${PORT_FRONT}/dashboard?token=${userExist.token}`,
-  );
   // return res.redirect(`${FRONTEND_URL}/dashboard?token=${userExist.token}`);
-  // return res.redirect(`${HEROKU_HOST}/dashboard?token=${userExist.token}`);
+  return res.redirect(
+    `${BASE_URL}${PORT_FRONT}/dashboard/?token=${userExist.token}`,
+  );
 };
 
 module.exports = googleRedirect;
