@@ -1,3 +1,4 @@
+const { randomUUID } = require('crypto');
 const queryString = require('query-string');
 const axios = require('axios');
 const generator = require('generate-password');
@@ -53,7 +54,7 @@ const googleRedirect = async (req, res) => {
       avatarURL,
     });
     newUser.verifyUser(true);
-    newUser.verifyToken(null);
+    newUser.verifyToken(randomUUID());
     newUser.setHashPassword(password);
     newUser.setToken();
     newUser.setToBase(true);
