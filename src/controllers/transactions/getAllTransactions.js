@@ -5,7 +5,7 @@ const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 // https://amazing-wallet.herokuapp.com/api/transactions
 // METHOD: GET
 const getAllTransactions = async (req, res) => {
-  const { page = 1, limit = 10 } = req.query;
+  const { page = 1, limit = 8 } = req.query;
   const { _id } = req.user;
 
   const skip = (page - 1) * limit;

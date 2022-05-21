@@ -28,11 +28,16 @@ const validationUpdateTransaction = Joi.object({
   sum: Joi.number().optional().messages({
     'string.empty': 'The sum cannot be empty',
   }),
-  comment: Joi.string().pattern(regexName).max(250).optional().trim().messages({
-    'string.empty': 'The comment cannot be empty',
-    'string.pattern.base': 'Enter the desired format!',
-    'string.max': 'Max 250 characters',
-  }),
+  comment: Joi.string()
+    .pattern(regexName)
+    .max(250)
+    .empty('')
+    .optional()
+    .trim()
+    .messages({
+      'string.pattern.base': 'Enter the desired format!',
+      'string.max': 'Max 250 characters',
+    }),
 });
 
 module.exports = validationUpdateTransaction;

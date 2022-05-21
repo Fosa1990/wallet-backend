@@ -13,12 +13,15 @@ const updateByIdTransaction = async (req, res) => {
   const { date, transactionType, category, sum, comment } = req.body;
   const { transactionId } = req.params;
 
-  const newSum = Number(sum).toFixed(2);
+  const normalizedSum = Number(sum).toFixed(2);
+  const numberSum = Number(normalizedSum);
 
   const checkTransaction = await Transaction.findOne({
     _id: transactionId,
     owner: _id,
   });
+
+  const numberCheckTransactionSum = Number(checkTransaction.sum);
 
   if (!checkTransaction) {
     return res.status(HTTP_CODE.NOT_FOUND).json({
@@ -31,12 +34,12 @@ const updateByIdTransaction = async (req, res) => {
   } else {
     if (
       checkTransaction.transactionType !== transactionType ||
-      Number(checkTransaction.sum) !== newSum
+      numberCheckTransactionSum !== numberSum
     ) {
       const newBalance = await balanceUpdateTransaction(
         transactionType,
-        newSum,
-        Number(checkTransaction.sum),
+        numberSum,
+        numberCheckTransactionSum,
         checkTransaction.transactionType,
       );
 
