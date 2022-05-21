@@ -13,7 +13,7 @@ const createTransaction = async (req, res) => {
   const { balance, _id } = req.user;
   const { date, transactionType, category, sum, comment } = req.body;
 
-  const newSum = Number(sum.toFixed(2));
+  const newSum = Number(sum).toFixed(2);
 
   const checkTransaction = await Transaction.findOne({
     date: { $lt: date },

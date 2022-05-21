@@ -7,11 +7,11 @@ const { User } = require('../../models');
 const {
   GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET,
-  PORT_FRONT,
-  BASE_URL,
+  // PORT_FRONT,
+  // BASE_URL,
   HEROKU_HOST,
   // PORT,
-  // FRONTEND_URL
+  FRONTEND_URL,
 } = process.env;
 
 // https://amazing-wallet.herokuapp.com/api/auth/google-redirect
@@ -60,19 +60,19 @@ const googleRedirect = async (req, res) => {
     newUser.setToBase(true);
     await newUser.save();
     // TODO: CHANGE redirect to dashboard frontend page
-    // return res.redirect(`${FRONTEND_URL}/dashboard?token=${userExist.token}`);
-    return res.redirect(
-      `${BASE_URL}${PORT_FRONT}/dashboard/?token=${userExist.token}`,
-    );
+    return res.redirect(`${FRONTEND_URL}/dashboard?token=${userExist.token}`);
+    // return res.redirect(
+    //   `${BASE_URL}${PORT_FRONT}/dashboard/?token=${userExist.token}`,
+    // );
   }
 
   userExist.setToken();
   await userExist.save();
   // TODO: CHANGE redirect to dashboard frontend page
-  // return res.redirect(`${FRONTEND_URL}/dashboard?token=${userExist.token}`);
-  return res.redirect(
-    `${BASE_URL}${PORT_FRONT}/dashboard/?token=${userExist.token}`,
-  );
+  return res.redirect(`${FRONTEND_URL}/dashboard?token=${userExist.token}`);
+  // return res.redirect(
+  //   `${BASE_URL}${PORT_FRONT}/dashboard/?token=${userExist.token}`,
+  // );
 };
 
 module.exports = googleRedirect;

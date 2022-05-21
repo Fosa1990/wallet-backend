@@ -13,7 +13,7 @@ const updateByIdTransaction = async (req, res) => {
   const { date, transactionType, category, sum, comment } = req.body;
   const { transactionId } = req.params;
 
-  const newSum = Number(sum.toFixed(2));
+  const newSum = Number(sum).toFixed(2);
 
   const checkTransaction = await Transaction.findOne({
     _id: transactionId,
