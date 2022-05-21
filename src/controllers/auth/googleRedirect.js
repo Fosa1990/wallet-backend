@@ -7,11 +7,9 @@ const { User } = require('../../models');
 const {
   GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET,
-  // PORT_FRONT,
-  // BASE_URL,
   HEROKU_HOST,
-  // PORT,
   FRONTEND_URL,
+  // LOCAL_3000,
 } = process.env;
 
 // https://amazing-wallet.herokuapp.com/api/auth/google-redirect
@@ -26,7 +24,7 @@ const googleRedirect = async (req, res) => {
     data: {
       client_id: GOOGLE_CLIENT_ID,
       client_secret: GOOGLE_CLIENT_SECRET,
-      // redirect_uri: `${BASE_URL}${PORT}/api/auth/google-redirect`,
+      // redirect_uri: `${LOCAL_3000}/api/auth/google-redirect`,
       redirect_uri: `${HEROKU_HOST}/api/auth/google-redirect`,
       grant_type: 'authorization_code',
       code,
@@ -62,7 +60,7 @@ const googleRedirect = async (req, res) => {
     // TODO: CHANGE redirect to dashboard frontend page
     return res.redirect(`${FRONTEND_URL}/dashboard?token=${userExist.token}`);
     // return res.redirect(
-    //   `${BASE_URL}${PORT_FRONT}/dashboard/?token=${userExist.token}`,
+    //   `${LOCAL_3000}/dashboard/?token=${userExist.token}`,
     // );
   }
 
@@ -71,7 +69,7 @@ const googleRedirect = async (req, res) => {
   // TODO: CHANGE redirect to dashboard frontend page
   return res.redirect(`${FRONTEND_URL}/dashboard?token=${userExist.token}`);
   // return res.redirect(
-  //   `${BASE_URL}${PORT_FRONT}/dashboard/?token=${userExist.token}`,
+  //   `${LOCAL_3000}/dashboard/?token=${userExist.token}`,
   // );
 };
 
