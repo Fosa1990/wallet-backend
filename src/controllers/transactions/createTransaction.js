@@ -13,7 +13,8 @@ const createTransaction = async (req, res) => {
   const { balance, _id } = req.user;
   const { date, transactionType, category, sum, comment } = req.body;
 
-  const newSum = Number(sum).toFixed(2);
+  const normalizedSum = Number(sum).toFixed(2);
+  const numberSum = Number(normalizedSum);
 
   const checkTransaction = await Transaction.findOne({
     date: { $lt: date },
@@ -24,6 +25,8 @@ const createTransaction = async (req, res) => {
 
   if (checkTransaction) {
     balanceTransaction = checkTransaction.balance;
+  } else if (!checkTransaction && balance !== 0) {
+    balanceTransaction = 0;
   } else {
     balanceTransaction = balance;
   }
@@ -31,14 +34,14 @@ const createTransaction = async (req, res) => {
   const newBalanceCreate = await balanceCreateTransaction(
     transactionType,
     balanceTransaction,
-    newSum,
+    numberSum,
   );
 
   const transaction = new Transaction({
     date,
     transactionType,
     category,
-    sum: newSum,
+    sum: numberSum,
     comment,
     balance: newBalanceCreate,
     owner: _id,
@@ -47,7 +50,7 @@ const createTransaction = async (req, res) => {
 
   const newBalanceUpdate = await balanceCreateUpdateTransaction(
     transactionType,
-    newSum,
+    numberSum,
   );
 
   await User.updateOne(
@@ -57,14 +60,12 @@ const createTransaction = async (req, res) => {
     },
   );
 
-  if (checkTransaction) {
-    await Transaction.updateMany(
-      {
-        $and: [{ owner: _id }, { date: { $gt: date } }],
-      },
-      { $inc: { balance: newBalanceUpdate } },
-    );
-  }
+  await Transaction.updateMany(
+    {
+      $and: [{ owner: _id }, { date: { $gt: date } }],
+    },
+    { $inc: { balance: newBalanceUpdate } },
+  );
 
   res.status(HTTP_CODE.CREATED).json({
     status: STATUS.CREATED,

@@ -35,10 +35,10 @@ const validationCreateTransaction = Joi.object({
   comment: Joi.string()
     .pattern(regexName)
     .max(250)
-    .default('')
+    .empty('')
+    .optional()
     .trim()
     .messages({
-      'string.empty': 'The comment cannot be empty',
       'string.pattern.base': 'Enter the desired format!',
       'string.max': 'Max 250 characters',
     }),
