@@ -6,11 +6,7 @@ const {
   googleRedirect,
 } = require('./auth');
 const { current, reVerify, verifyEmail, avatar } = require('./users');
-const {
-  createCategory,
-  getAllCategories,
-  getByIdCategories,
-} = require('./categories');
+const { getAllCategories } = require('./categories');
 const {
   createTransaction,
   getAllTransactions,
@@ -18,6 +14,7 @@ const {
   updateByIdTransaction,
   deleteTransaction,
 } = require('./transactions');
+const { currency } = require('./currency');
 
 module.exports = {
   googleAuth,
@@ -29,12 +26,11 @@ module.exports = {
   reVerify,
   verifyEmail,
   avatar,
-  createCategory,
   getAllCategories,
-  getByIdCategories,
   createTransaction,
   getAllTransactions,
   getByIdTransaction,
   updateByIdTransaction,
   deleteTransaction,
+  currency,
 };

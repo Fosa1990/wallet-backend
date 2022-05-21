@@ -9,6 +9,7 @@ const authRouter = require('./src/routes/api/auth');
 const categoriesRouter = require('./src/routes/api/categories');
 const transactionsRouter = require('./src/routes/api/transactions');
 const usersRouter = require('./src/routes/api/users');
+const currencyRouter = require('./src/routes/api/currency');
 
 const {
   routesErrorhandler,
@@ -42,6 +43,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/categories', categoriesRouter);
 app.use('/api/transactions', transactionsRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/currency', currencyRouter);
 
 app.use(routesErrorhandler);
 app.use(mainErrorHandler);
