@@ -1,7 +1,7 @@
 const { NotFound } = require('http-errors');
 const { User } = require('../../models');
-const { FRONTEND_URL /*, BASE_URL, PORT_FRONT */ } = process.env;
-// const {  /* FRONTEND_URL, */ BASE_URL, PORT_FRONT } = process.env;
+const { FRONTEND_URL /*, LOCAL_3000 */ } = process.env;
+// const {  /* FRONTEND_URL, */ LOCAL_3000 } = process.env;
 
 // http://localhost:8081/api/users/verify/:verificationToken
 // https://amazing-wallet.herokuapp.com/api/users/verify/:verificationToken
@@ -21,7 +21,7 @@ const verifyEmail = async (req, res) => {
     `${FRONTEND_URL}/verify?email=${userExist.email}&name=${userExist.name}&isVerified=${userExist.isVerified}`,
   );
   // return res.redirect(
-  //   `${BASE_URL}${PORT_FRONT}/verify?email=${userExist.email}&name=${userExist.name}&isVerified=${userExist.isVerified}`,
+  //   `${LOCAL_3000}/verify?email=${userExist.email}&name=${userExist.name}&isVerified=${userExist.isVerified}`,
   // );
 };
 
