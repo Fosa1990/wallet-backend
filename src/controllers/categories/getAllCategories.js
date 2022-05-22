@@ -45,7 +45,8 @@ const getAllCategories = async (req, res) => {
       },
     },
   ]);
-  res.status(HTTP_CODE.OK).json({
+
+  return res.status(HTTP_CODE.OK).json({
     status: STATUS.SUCCESS,
     code: HTTP_CODE.OK,
     payload: {

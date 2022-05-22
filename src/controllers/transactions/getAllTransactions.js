@@ -5,7 +5,7 @@ const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 // https://amazing-wallet.herokuapp.com/api/transactions
 // METHOD: GET
 const getAllTransactions = async (req, res) => {
-  const { page = 1, limit = 8 } = req.query;
+  const { page = 1, limit = 9 } = req.query;
   const { _id } = req.user;
 
   const skip = (page - 1) * limit;
@@ -25,6 +25,7 @@ const getAllTransactions = async (req, res) => {
   const totalDocuments = await Transaction.countDocuments({
     owner: _id,
   });
+
   return res.status(HTTP_CODE.OK).json({
     status: STATUS.SUCCESS,
     code: HTTP_CODE.OK,

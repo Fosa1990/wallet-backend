@@ -12,7 +12,7 @@ const current = async (req, res) => {
   if (!userExist || !userExist.isVerified)
     throw new Unauthorized(MESSAGE.NOT_AUTHORIZED);
 
-  res.status(HTTP_CODE.OK).json({
+  return res.status(HTTP_CODE.OK).json({
     status: STATUS.SUCCESS,
     code: HTTP_CODE.OK,
     payload: {

@@ -9,20 +9,26 @@ const validationSignupUser = Joi.object({
     .max(USER_LIMIT.NAME.MAX)
     .required()
     .messages({
-      'any.required': 'Name is required',
       'string.empty': 'The name cannot be empty',
+      'string.pattern.base': 'Enter the desired format',
+      'string.min': `Min ${USER_LIMIT.NAME.MIN} characters`,
+      'string.max': `Min ${USER_LIMIT.NAME.MAX} characters`,
+      'any.required': 'Name is required',
     }),
   email: Joi.string().pattern(regexEmail).required().messages({
-    'any.required': 'Email is required',
     'string.empty': 'The email cannot be empty',
+    'string.pattern.base': 'Enter the desired format',
+    'any.required': 'Email is required',
   }),
   password: Joi.string()
     .min(USER_LIMIT.PASSWORD.MIN)
     .max(USER_LIMIT.PASSWORD.MAX)
     .required()
     .messages({
-      'any.required': 'Password is required',
       'string.empty': 'The password cannot be empty',
+      'string.min': `Min ${USER_LIMIT.PASSWORD.MIN} characters`,
+      'string.max': `Min ${USER_LIMIT.PASSWORD.MAX} characters`,
+      'any.required': 'Password is required',
     }),
   confirmPassword: Joi
     // .ref('password')
@@ -31,12 +37,14 @@ const validationSignupUser = Joi.object({
     .max(USER_LIMIT.PASSWORD.MAX)
     .optional()
     .messages({
-      'any.optional': "Password isn't required",
       'string.empty': 'The confirm password cannot be empty',
+      'string.min': `Min ${USER_LIMIT.PASSWORD.MIN} characters`,
+      'string.max': `Min ${USER_LIMIT.PASSWORD.MAX} characters`,
+      'any.optional': "Password isn't required",
     }),
   avatarURL: Joi.string().optional().default(null).messages({
-    'any.optional': "avatarURL isn't required",
     'string.empty': 'The avatarURL cannot be empty',
+    'any.optional': "avatarURL isn't required",
   }),
 });
 

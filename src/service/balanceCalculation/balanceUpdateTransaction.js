@@ -27,6 +27,7 @@ const balanceUpdateTransaction = (
       }
     }
   }
+
   return newBalance;
 };
 
