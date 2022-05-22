@@ -19,7 +19,7 @@ const signin = async (req, res) => {
   userExist.setToken();
   await userExist.save();
 
-  res.json({
+  return res.json({
     status: STATUS.SUCCESS,
     code: HTTP_CODE.OK,
     payload: {

@@ -26,7 +26,7 @@ const deleteTransaction = async (req, res) => {
   } else {
     const newBalance = await balanceDeleteTransaction(
       checkTransaction.transactionType,
-      Number(checkTransaction.sum),
+      checkTransaction.sum,
     );
 
     await Transaction.updateMany(

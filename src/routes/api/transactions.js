@@ -6,14 +6,12 @@ const {
   getByIdTransaction,
   updateByIdTransaction,
 } = require('../../controllers');
-
 const {
   validateAuth,
   validateBody,
   validateParams,
   tryCatchWrapper,
 } = require('../../middlewares');
-
 const {
   validationId,
   validationCreateTransaction,

@@ -13,15 +13,10 @@ const updateByIdTransaction = async (req, res) => {
   const { date, transactionType, category, sum, comment } = req.body;
   const { transactionId } = req.params;
 
-  const normalizedSum = Number(sum).toFixed(2);
-  const numberSum = Number(normalizedSum);
-
   const checkTransaction = await Transaction.findOne({
     _id: transactionId,
     owner: _id,
   });
-
-  const numberCheckTransactionSum = Number(checkTransaction.sum);
 
   if (!checkTransaction) {
     return res.status(HTTP_CODE.NOT_FOUND).json({
@@ -34,12 +29,12 @@ const updateByIdTransaction = async (req, res) => {
   } else {
     if (
       checkTransaction.transactionType !== transactionType ||
-      numberCheckTransactionSum !== numberSum
+      checkTransaction.sum !== sum
     ) {
       const newBalance = await balanceUpdateTransaction(
         transactionType,
-        numberSum,
-        numberCheckTransactionSum,
+        sum,
+        checkTransaction.sum,
         checkTransaction.transactionType,
       );
 
@@ -57,6 +52,7 @@ const updateByIdTransaction = async (req, res) => {
         },
       );
     }
+
     const transaction = await Transaction.findOneAndUpdate(
       {
         _id: transactionId,
@@ -67,6 +63,7 @@ const updateByIdTransaction = async (req, res) => {
         new: true,
       },
     ).populate('owner', '_id name email balance');
+
     return res.status(HTTP_CODE.OK).json({
       status: STATUS.SUCCESS,
       code: HTTP_CODE.OK,

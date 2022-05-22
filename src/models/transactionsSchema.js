@@ -23,6 +23,7 @@ const transactionsSchema = new Schema(
     },
     sum: {
       type: Number,
+      min: 0.01,
       required: [true, 'Specify the amount of the transaction'],
     },
     comment: {

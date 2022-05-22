@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { getAllCategories } = require('../../controllers');
-
 const { validateAuth, tryCatchWrapper } = require('../../middlewares');
 
 /**

@@ -4,7 +4,7 @@ const { STATUS, HTTP_CODE } = require('../../helpers/constants');
 // https://amazing-wallet.herokuapp.com/api/users/avatar
 // METHOD: PATCH
 const avatar = async (req, res, next) => {
-  res.json({
+  return res.json({
     status: STATUS.SUCCESS,
     code: HTTP_CODE.OK,
     payload: {

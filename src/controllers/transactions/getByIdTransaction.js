@@ -10,7 +10,7 @@ const getByIdTransaction = async (req, res) => {
     owner: req.user._id,
   }).populate('owner', '_id name email balance');
   if (transaction) {
-    res.status(HTTP_CODE.OK).json({
+    return res.status(HTTP_CODE.OK).json({
       status: STATUS.SUCCESS,
       code: HTTP_CODE.OK,
       payload: {
@@ -19,7 +19,7 @@ const getByIdTransaction = async (req, res) => {
       },
     });
   } else {
-    res.status(HTTP_CODE.NOT_FOUND).json({
+    return res.status(HTTP_CODE.NOT_FOUND).json({
       status: STATUS.ERROR,
       code: HTTP_CODE.NOT_FOUND,
       payload: {

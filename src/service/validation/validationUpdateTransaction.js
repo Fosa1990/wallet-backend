@@ -1,10 +1,10 @@
 const Joi = require('joi');
 const category = require('../../helpers/category');
 const transactionType = require('../../helpers/transactionType');
-const { regexName } = require('../../helpers/regex');
 
 const validationUpdateTransaction = Joi.object({
   date: Joi.string().optional().messages({
+    'number.base': 'The sum must be a string',
     'string.empty': 'The date cannot be empty',
   }),
   transactionType: Joi.string()
@@ -12,6 +12,7 @@ const validationUpdateTransaction = Joi.object({
     .lowercase()
     .optional()
     .messages({
+      'number.base': 'The sum must be a string',
       'string.empty': 'The transaction type cannot be empty',
       'any.only': `Transaction type must be one of: ${transactionType.join(
         ', ',
@@ -22,22 +23,20 @@ const validationUpdateTransaction = Joi.object({
     .lowercase()
     .optional()
     .messages({
+      'number.base': 'The sum must be a string',
       'string.empty': 'The category cannot be empty',
       'any.only': `Category must be one of: ${category.join(', ')}`,
     }),
-  sum: Joi.number().optional().messages({
-    'string.empty': 'The sum cannot be empty',
+  sum: Joi.number().strict().precision(2).min(0.01).optional().messages({
+    'number.base': 'The sum must be a number',
+    'number.precision': 'The sum must have no more than 2 decimal places',
+    'number.min': 'The sum must be greater than or equal to 0.01',
+    'any.required': 'Specify the amount of the transaction',
   }),
-  comment: Joi.string()
-    .pattern(regexName)
-    .max(250)
-    .empty('')
-    .optional()
-    .trim()
-    .messages({
-      'string.pattern.base': 'Enter the desired format!',
-      'string.max': 'Max 250 characters',
-    }),
+  comment: Joi.string().max(250).empty('').optional().trim().messages({
+    'number.base': 'The sum must be a string',
+    'string.max': 'Max 250 characters',
+  }),
 });
 
 module.exports = validationUpdateTransaction;
