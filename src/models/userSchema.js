@@ -47,7 +47,6 @@ const userSchema = new Schema(
     },
     balance: {
       type: Number,
-      min: 0,
       required: [true, 'Balance is required'],
       default: 0,
     },
