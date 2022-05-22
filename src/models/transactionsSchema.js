@@ -34,7 +34,6 @@ const transactionsSchema = new Schema(
     },
     balance: {
       type: Number,
-      min: 0,
       required: [true, 'Balance is required'],
     },
     owner: {
