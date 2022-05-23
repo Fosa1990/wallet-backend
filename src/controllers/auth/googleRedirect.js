@@ -9,8 +9,7 @@ const {
   GOOGLE_CLIENT_SECRET,
   // HEROKU_HOST,
   // FRONTEND_URL,
-  // LOCAL_3000,
-  // PORT,
+  LOCAL_3000,
   LOCAL_8081,
   // BASE_URL,
 } = process.env;
@@ -64,17 +63,17 @@ const googleRedirect = async (req, res) => {
     newUser.setToken();
     newUser.setToBase(true);
     await newUser.save();
-    // return res.redirect(`${FRONTEND_URL}/dashboard?token=${userExist.token}`);
-    // return res.redirect(`${LOCAL_3000}/dashboard/?token=${userExist.token}`);
-    return res.redirect(`${LOCAL_8081}/dashboard/?token=${userExist.token}`);
+    // return res.redirect(`${FRONTEND_URL}/statistics?token=${userExist.token}`);
+    return res.redirect(`${LOCAL_3000}/statistics/?token=${userExist.token}`);
+    // return res.redirect(`${LOCAL_8081}/statistics/?token=${userExist.token}`);
   }
 
   userExist.setToken();
   await userExist.save();
 
-  // return res.redirect(`${FRONTEND_URL}/dashboard?token=${userExist.token}`);
-  // return res.redirect(`${LOCAL_3000}/dashboard/?token=${userExist.token}`);
-  return res.redirect(`${LOCAL_8081}/dashboard/?token=${userExist.token}`);
+  // return res.redirect(`${FRONTEND_URL}/statistics?token=${userExist.token}`);
+  return res.redirect(`${LOCAL_3000}/statistics/?token=${userExist.token}`);
+  // return res.redirect(`${LOCAL_8081}/statistics/?token=${userExist.token}`);
 };
 
 module.exports = googleRedirect;
