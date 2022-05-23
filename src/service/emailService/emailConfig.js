@@ -1,7 +1,7 @@
 const { HEROKU_HOST } = process.env;
 const emailConfig = async (name, email, verificationToken) => {
   const htmlTemplate = `
-  <h1>Hi ${name}!</h1>
+  <h1>Hi <span style="text-transform: capitalize"> ${name}!<span/></h1>
   <p>You need to confirm your email to access the Amazing Wallet</p>
   <br/>
   <p>If you have any questions/issues regarding the process, feel free to <a target="_blank" rel="noopener noreferrer" href="mailto:fosa1990@meta.ua">contact me.</a></p>

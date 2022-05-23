@@ -2,6 +2,8 @@ const queryString = require('query-string');
 const {
   GOOGLE_CLIENT_ID,
   HEROKU_HOST,
+  // PORT,
+  // BASE_URL,
   // LOCAL_3000,
   // FRONTEND_URL
 } = process.env;
@@ -10,7 +12,7 @@ const {
 const googleAuth = async (req, res) => {
   const stringifiedParams = queryString.stringify({
     client_id: GOOGLE_CLIENT_ID,
-    // redirect_uri: `${LOCAL_3000}/api/auth/google-redirect`,
+    // redirect_uri: `${BASE_URL}${PORT}/api/auth/google-redirect`,
     redirect_uri: `${HEROKU_HOST}/api/auth/google-redirect`,
     scope: [
       'https://www.googleapis.com/auth/userinfo.email',
