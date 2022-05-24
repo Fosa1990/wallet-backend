@@ -52,7 +52,7 @@ const userSchema = new Schema(
       ],
       maxlength: [
         USER_LIMIT.PASSWORD.MAX,
-        ` must be at most ${USER_LIMIT.PASSWORD.MAX} characters long`,
+        `must be at most ${USER_LIMIT.PASSWORD.MAX} characters long`,
       ],
       required: [true, 'Password is required'],
     },
