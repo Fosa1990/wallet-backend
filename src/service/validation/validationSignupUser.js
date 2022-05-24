@@ -30,9 +30,7 @@ const validationSignupUser = Joi.object({
       'string.max': `Min ${USER_LIMIT.PASSWORD.MAX} characters`,
       'any.required': 'Password is required',
     }),
-  confirmPassword: Joi
-    // .ref('password')
-    .string()
+  confirmPassword: Joi.string()
     .min(USER_LIMIT.PASSWORD.MIN)
     .max(USER_LIMIT.PASSWORD.MAX)
     .optional()

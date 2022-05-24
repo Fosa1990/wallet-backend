@@ -14,8 +14,14 @@ const userSchema = new Schema(
       type: String,
       trim: true,
       lowercase: true,
-      minlength: USER_LIMIT.NAME.MIN,
-      maxlength: USER_LIMIT.NAME.MAX,
+      minlength: [
+        USER_LIMIT.NAME.MIN,
+        `must be at least ${USER_LIMIT.NAME.MIN} characters long`,
+      ],
+      maxlength: [
+        USER_LIMIT.NAME.MAX,
+        `must be at most ${USER_LIMIT.NAME.MAX} characters long`,
+      ],
       required: [true, 'Name is required'],
       validate: [validateName, 'Please fill a valid name'],
       match: [regexName, 'Please fill a valid name'],
@@ -25,8 +31,14 @@ const userSchema = new Schema(
       index: true,
       trim: true,
       lowercase: true,
-      minlength: USER_LIMIT.EMAIL.MIN,
-      maxlength: USER_LIMIT.EMAIL.MAX,
+      minlength: [
+        USER_LIMIT.EMAIL.MIN,
+        `must be at least ${USER_LIMIT.EMAIL.MIN} characters long`,
+      ],
+      maxlength: [
+        USER_LIMIT.EMAIL.MAX,
+        `must be at most ${USER_LIMIT.EMAIL.MAX} characters long`,
+      ],
       required: [true, 'Email is required'],
       validate: [validateEmail, 'Please fill a valid email address'],
       match: [regexEmail, 'Please fill a valid email address'],
@@ -34,15 +46,26 @@ const userSchema = new Schema(
     },
     password: {
       type: String,
-      minlength: USER_LIMIT.PASSWORD.MIN,
-      required: [
-        true,
-        'Password is required and must be at least 6 characters long',
+      minlength: [
+        USER_LIMIT.PASSWORD.MIN,
+        `must be at least ${USER_LIMIT.PASSWORD.MIN} characters long`,
       ],
+      maxlength: [
+        USER_LIMIT.PASSWORD.MAX,
+        ` must be at most ${USER_LIMIT.PASSWORD.MAX} characters long`,
+      ],
+      required: [true, 'Password is required'],
     },
     confirmPassword: {
       type: String,
-      minlength: USER_LIMIT.PASSWORD.MIN,
+      minlength: [
+        USER_LIMIT.PASSWORD.MIN,
+        `must be at least ${USER_LIMIT.PASSWORD.MIN} characters long`,
+      ],
+      maxlength: [
+        USER_LIMIT.PASSWORD.MAX,
+        ` must be at most ${USER_LIMIT.PASSWORD.MAX} characters long`,
+      ],
       required: [false, "Confirm Password isn't required"],
     },
     balance: {
