@@ -6,7 +6,7 @@ const transactionsSchema = new Schema(
   {
     date: {
       type: Date,
-      min: '2022-01-01',
+      min: '2020-01-01',
       required: [true, 'Date is required'],
     },
     transactionType: {
