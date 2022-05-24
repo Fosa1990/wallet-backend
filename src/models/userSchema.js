@@ -46,26 +46,10 @@ const userSchema = new Schema(
     },
     password: {
       type: String,
-      minlength: [
-        USER_LIMIT.PASSWORD.MIN,
-        `must be at least ${USER_LIMIT.PASSWORD.MIN} characters long`,
-      ],
-      maxlength: [
-        USER_LIMIT.PASSWORD.MAX,
-        ` must be at most ${USER_LIMIT.PASSWORD.MAX} characters long`,
-      ],
       required: [true, 'Password is required'],
     },
     confirmPassword: {
       type: String,
-      minlength: [
-        USER_LIMIT.PASSWORD.MIN,
-        `must be at least ${USER_LIMIT.PASSWORD.MIN} characters long`,
-      ],
-      maxlength: [
-        USER_LIMIT.PASSWORD.MAX,
-        ` must be at most ${USER_LIMIT.PASSWORD.MAX} characters long`,
-      ],
       required: [false, "Confirm Password isn't required"],
     },
     balance: {
