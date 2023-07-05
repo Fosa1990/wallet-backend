@@ -17,12 +17,13 @@ const {
 } = require('./src/service/errorHandlers');
 const { apiLimit } = require('./src/config/rateLimit.json');
 const { swaggerUI, swaggerSpec } = require('./src/helpers/swagger');
+const { FRONTEND_URL } = process.env;
 
 const app = express();
 
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short';
 
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors({ origin: FRONTEND_URL, credentials: true }));
 app.use(limiter(apiLimit));
 app.use(helmet());
 app.use(logger(formatsLogger));

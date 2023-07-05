@@ -2,7 +2,7 @@ const { randomUUID } = require('crypto');
 const { Conflict } = require('http-errors');
 const { User } = require('../../models');
 const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
-const { sendEmail, emailConfig } = require('../../service/emailService');
+// const { sendEmail, emailConfig } = require('../../service/emailService');
 
 // http://localhost:8081/api/auth/signup
 // https://amazing-wallet.herokuapp.com/api/auth/signup
@@ -20,21 +20,22 @@ const signup = async (req, res) => {
     email,
     verificationToken,
   });
-  // TODO: тимчасово верифікований поки розробляємо авторизацію
-  // newUser.verifyUser(true);
-  newUser.verifyUser(false);
+  // TODO: тимчасово верифікований поки виправляємо авторизацію.
+  newUser.verifyUser(true);
+  // newUser.verifyUser(false);
   newUser.setToBase(true);
   newUser.verifyToken(verificationToken);
   newUser.setHashPassword(password);
   newUser.setAvatar();
   await newUser.save();
 
-  const emailData = await emailConfig(
-    newUser.name,
-    newUser.email,
-    newUser.verificationToken,
-  );
-  await sendEmail(emailData);
+  // TODO: тимчасово відключено поки виправляємо авторизацію.
+  // const emailData = await emailConfig(
+  //   newUser.name,
+  //   newUser.email,
+  //   newUser.verificationToken,
+  // );
+  // await sendEmail(emailData);
 
   return res.status(HTTP_CODE.CREATED).json({
     status: STATUS.CREATED,
