@@ -7,14 +7,14 @@ const { User } = require('../../models');
 const {
   GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET,
-  HEROKU_HOST,
+  RENDER_HOST,
   FRONTEND_URL,
   // LOCAL_3000,
   // PORT,
   // BASE_URL,
 } = process.env;
 
-// https://amazing-wallet.herokuapp.com/api/auth/google-redirect
+// https://amazing-wallet.onrender.com/api/auth/google-redirect
 const googleRedirect = async (req, res) => {
   const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
   const urlObj = new URL(fullUrl);
@@ -27,7 +27,7 @@ const googleRedirect = async (req, res) => {
       client_id: GOOGLE_CLIENT_ID,
       client_secret: GOOGLE_CLIENT_SECRET,
       // redirect_uri: `${BASE_URL}${PORT}/api/auth/google-redirect`,
-      redirect_uri: `${HEROKU_HOST}/api/auth/google-redirect`,
+      redirect_uri: `${RENDER_HOST}/api/auth/google-redirect`,
       grant_type: 'authorization_code',
       code,
     },

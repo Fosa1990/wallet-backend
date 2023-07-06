@@ -28,7 +28,7 @@ const { tryCatchWrapper } = require('../../middlewares');
  */
 
 // http://localhost:8081/api/currency
-// https://amazing-wallet.herokuapp.com/api/currency
+// https://amazing-wallet.onrender.com/api/currency
 router
   /**
    * @openapi

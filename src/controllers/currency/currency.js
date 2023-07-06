@@ -1,13 +1,13 @@
 const axios = require('axios');
-const { PRIVAT_API_URL } = require('../../helpers/constants');
+const { PRIVATE_API_URL } = require('../../helpers/constants');
 const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 
 // http://localhost:8081/api/currency/
-// https://amazing-wallet.herokuapp.com/api/currency/
+// https://amazing-wallet.onrender.com/api/currency/
 // METHOD: GET
 const currency = async (req, res) => {
   const { data } = await axios
-    .get(PRIVAT_API_URL.ONLINE)
+    .get(PRIVATE_API_URL.ONLINE)
     .then(res => res)
     .catch(err => err.res);
 

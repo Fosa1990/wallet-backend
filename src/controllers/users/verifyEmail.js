@@ -4,7 +4,8 @@ const { FRONTEND_URL /*, LOCAL_3000 */ } = process.env;
 // const {  /* FRONTEND_URL, */ LOCAL_3000 } = process.env;
 
 // http://localhost:8081/api/users/verify/:verificationToken
-// https://amazing-wallet.herokuapp.com/api/users/verify/:verificationToken
+// https://amazing-wallet.onrender.com/api/users/verify/:verificationToken
+
 // METHOD: GET
 const verifyEmail = async (req, res) => {
   const { verificationToken } = req.params;

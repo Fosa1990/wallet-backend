@@ -88,7 +88,7 @@ const {
  */
 
 // http://localhost:8081/api/transactions
-// https://amazing-wallet.herokuapp.com/api/transactions
+// https://amazing-wallet.onrender.com/api/transactions
 router
   /**
    * @openapi
@@ -117,7 +117,7 @@ router
    *                 example : 2000
    *               comment:
    *                 type: string
-   *                 example : some coment
+   *                 example : some comment
    *               category:
    *                 type: string
    *                 example : income
@@ -154,7 +154,7 @@ router
    *                       example : 3000
    *                     comment:
    *                       type: string
-   *                       example : some coment
+   *                       example : some comment
    *                     balance:
    *                       type: double
    *                       example: 12000
@@ -216,7 +216,7 @@ router
   );
 
 // http://localhost:8081/api/transactions
-// https://amazing-wallet.herokuapp.com/api/transactions
+// https://amazing-wallet.onrender.com/api/transactions
 router
   /**
    * @openapi
@@ -331,7 +331,7 @@ router
   .get('/', validateAuth, tryCatchWrapper(getAllTransactions));
 
 // http://localhost:8081/api/transactions/transactionId
-// https://amazing-wallet.herokuapp.com/api/transactions/transactionId
+// https://amazing-wallet.onrender.com/api/transactions/transactionId
 router
   /**
    * @openapi
@@ -456,7 +456,7 @@ router
   .get('/:transactionId', validateAuth, tryCatchWrapper(getByIdTransaction));
 
 // http://localhost:8081/api/transactions/transactionId
-// https://amazing-wallet.herokuapp.com/api/transactions/transactionId
+// https://amazing-wallet.onrender.com/api/transactions/transactionId
 router
   /**
    * @openapi
@@ -533,7 +533,7 @@ router
   .delete('/:transactionId', validateAuth, tryCatchWrapper(deleteTransaction));
 
 // http://localhost:8081/api/transactions/transactionId
-// https://amazing-wallet.herokuapp.com/api/transactions/transactionId
+// https://amazing-wallet.onrender.com/api/transactions/transactionId
 router
   /**
    * @openapi
@@ -563,7 +563,7 @@ router
    *                 example : 2000
    *               comment:
    *                 type: string
-   *                 example : some coment
+   *                 example : some comment
    *               category:
    *                 type: string
    *                 example : products

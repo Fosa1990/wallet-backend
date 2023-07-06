@@ -59,7 +59,7 @@ const { validationEmail } = require('../../service/validation');
  */
 
 // http://localhost:8081/api/users/current
-// https://amazing-wallet.herokuapp.com/api/users/current
+// https://amazing-wallet.onrender.com/api/users/current
 router
   /**
    * @openapi
@@ -72,7 +72,7 @@ router
    *       - tokenAuth: []
    *     responses:
    *       200:
-   *         description: Сurrent user data
+   *         description: Current user data
    *         content:
    *           application/json:
    *             schema:
@@ -149,11 +149,11 @@ router
   .get('/current', validateAuth, tryCatchWrapper(current));
 
 // http://localhost:8081/api/users/avatar
-// https://amazing-wallet.herokuapp.com/api/users/avatar
+// https://amazing-wallet.onrender.com/api/avatar
 router.patch('/avatar', tryCatchWrapper(avatar));
 
 // http://localhost:8081/api/users/verify
-// https://amazing-wallet.herokuapp.com/api/users/verify
+// https://amazing-wallet.onrender.com/api/users/verify
 router.post(
   '/verify',
   validateBody(validationEmail),
@@ -161,7 +161,7 @@ router.post(
 );
 
 // http://localhost:8081/api/users/verify/:verificationToken
-// https://amazing-wallet.herokuapp.com/api/users/verify/:verificationToken
+// https://amazing-wallet.onrender.com/api/users/verify/:verificationToken
 router
   /**
    * @openapi

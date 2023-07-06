@@ -2,7 +2,7 @@ const { Transaction } = require('../../models');
 const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 
 // http://localhost:8081/api/transactions
-// https://amazing-wallet.herokuapp.com/api/transactions
+// https://amazing-wallet.onrender.com/api/transactions
 // METHOD: GET
 const getAllTransactions = async (req, res) => {
   const { page = 1, limit = 9 } = req.query;

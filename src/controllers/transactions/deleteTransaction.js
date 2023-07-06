@@ -6,7 +6,7 @@ const {
 const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 
 // http://localhost:8081/api/transactions/transactionId
-// https://amazing-wallet.herokuapp.com/api/transactions/transactionId
+// https://amazing-wallet.onrender.com/api/transactions/transactionId
 // METHOD: DELETE
 const deleteTransaction = async (req, res) => {
   const { _id } = req.user;

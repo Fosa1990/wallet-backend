@@ -3,7 +3,7 @@ const { User } = require('../../models');
 const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 
 // http://localhost:8081/api/auth/signin
-// https://amazing-wallet.herokuapp.com/api/auth/signin
+// https://amazing-wallet.onrender.com/api/auth/signin
 // METHOD: POST
 const signin = async (req, res) => {
   const { email, password } = req.body;

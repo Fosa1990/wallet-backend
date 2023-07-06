@@ -52,7 +52,7 @@ const MESSAGE = {
   CURRENCY_SUCCESSFUL: 'Currency loaded successful',
 };
 
-const PRIVAT_API_URL = {
+const PRIVATE_API_URL = {
   OFFLINE: 'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5',
   ONLINE: 'https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11',
 };
@@ -73,5 +73,5 @@ module.exports = {
   MESSAGE,
   FILE_SIZE,
   USER_LIMIT,
-  PRIVAT_API_URL,
+  PRIVATE_API_URL,
 };

@@ -5,7 +5,7 @@ const { STATUS, HTTP_CODE, MESSAGE } = require('../../helpers/constants');
 // const { sendEmail, emailConfig } = require('../../service/emailService');
 
 // http://localhost:8081/api/auth/signup
-// https://amazing-wallet.herokuapp.com/api/auth/signup
+// https://amazing-wallet.onrender.com/api/auth/signup
 // METHOD: POST
 const signup = async (req, res) => {
   const { name, email, password } = req.body;

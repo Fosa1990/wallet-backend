@@ -22,7 +22,7 @@ const { validateAuth, tryCatchWrapper } = require('../../middlewares');
  */
 
 // http://localhost:8081/api/categories?year=2022&month=10
-// https://amazing-wallet.herokuapp.com/api/categories?year=2022&month=10
+// https://amazing-wallet.onrender.com/api/categories?year=2022&month=10
 router
   /**
    * @openapi
@@ -46,7 +46,7 @@ router
    *           type: number
    *     responses:
    *       200:
-   *         description: Сurrent categories data
+   *         description: Current categories data
    *         content:
    *           application/json:
    *             schema:

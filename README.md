@@ -1,3 +1,3 @@
 # Amazing wallet backend
 
-[Amazing wallet API Docs](https://amazing-wallet.herokuapp.com/api/docs/)
+[Amazing wallet API Docs](https://amazing-wallet.onrender.com/api/docs/)

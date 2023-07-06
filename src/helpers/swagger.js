@@ -20,7 +20,7 @@ const definition = {
   },
   servers: [
     {
-      url: 'https://amazing-wallet.herokuapp.com/',
+      url: 'https://amazing-wallet.onrender.com/',
       description: 'API base URL',
     },
     {

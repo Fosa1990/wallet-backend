@@ -2,7 +2,7 @@ const { User } = require('../../models');
 const { STATUS, HTTP_CODE } = require('../../helpers/constants');
 
 // http://localhost:8081/api/auth/signout
-// https://amazing-wallet.herokuapp.com/api/auth/signout
+// https://amazing-wallet.onrender.com/api/auth/signout
 // METHOD: GET
 const signout = async (req, res) => {
   const { id } = req.user;
