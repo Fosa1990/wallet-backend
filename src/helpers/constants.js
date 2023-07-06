@@ -40,17 +40,20 @@ const MESSAGE = {
   REVERIFY_FAIL: 'Verification has already been passed',
   TOOLTIP_ROUTES:
     "Use routes: '/api/auth/' or '/api/users/' or '/api/categories/' or '/api/transactions' ...",
-  USER_CREATED: 'User created, please verify your email',
-  USER_SIGNIN: 'Signin successful',
-  USER_SIGNOUT: 'Signout successful',
+  USER_CREATED: 'User created successfully',
+  USER_SIGNIN: 'Signin successfully',
+  USER_SIGNOUT: 'Signout successfully',
   USER_CURRENT: 'Current user',
-  SIGNIN_FAILED: 'Please verify your email or email/password is wrong',
-  CREATED_SUCCESSFUL: 'Created successful',
-  LOADED_SUCCESSFUL: 'Loaded successful',
-  DELETED_SUCCESSFUL: 'Deleted successful',
-  UPDATED_SUCCESSFUL: 'Updated successful',
-  CURRENCY_SUCCESSFUL: 'Currency loaded successful',
+  SIGNIN_FAILED: 'The email or password is incorrect',
+  CREATED_SUCCESSFUL: 'Created successfully',
+  LOADED_SUCCESSFUL: 'Loaded successfully',
+  DELETED_SUCCESSFUL: 'Deleted successfully',
+  UPDATED_SUCCESSFUL: 'Updated successfully',
+  CURRENCY_SUCCESSFUL: 'Currency loaded successfully',
 };
+// TODO: тимчасове сповіщення, поки виправляється email-сервіс.
+// USER_CREATED: 'User created, please verify your email',
+// SIGNIN_FAILED: 'Please verify your email or email/password is wrong',
 
 const PRIVATE_API_URL = {
   OFFLINE: 'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5',
